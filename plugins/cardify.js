@@ -1,4 +1,5 @@
 //Lampa.
+
 (function () {
   var _0x490a38 = function () {
     var _0xb3f67c = true;
@@ -897,10 +898,9 @@
     if (!Lampa.Platform.screen('tv')) {
       return console.log("Cardify", "no tv");
     }
-/* Disable account.Premium check
-    if (!Lampa.Account.hasPremium()) {
+/*    if (!Lampa.Account.hasPremium()) {
       return console.log("Cardify", "no premium");
-    } */
+    }*/
     var _0x1a17dd = {
       ru: "Включить звук",
       en: "Enable sound",
