@@ -894,6 +894,7 @@
     de: _0x455de0
   };
   function _0xb43c20() {
+/*
     if (!Lampa.Platform.screen('tv')) {
       return console.log("Cardify", "no tv");
     }
