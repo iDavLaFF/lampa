@@ -8,8 +8,8 @@
         'https://lampame.github.io/main/pubtorr/pubtorr.js',
         'https://lampame.github.io/main/nc/nc.js',
         'https://nb557.github.io/plugins/rating.js',
-        'https://idavlaff.github.io/lampa/plugins/interface.js',
-        'https://idavlaff.github.io/lampa/plugins/inquality.js',/*
+        'https://idavlaff.github.io/lampa/plugins/interface.js',/*
+        'https://idavlaff.github.io/lampa/plugins/inquality.js',
         'https://idavlaff.github.io/lampa/plugins/cardifyby.js',
         'https://idavlaff.github.io/lampa/plugins/cuboff.js' */
     ], function () { });
