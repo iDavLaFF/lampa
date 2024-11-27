@@ -7,7 +7,6 @@
     	'https://lampame.github.io/main/pubtorr/pubtorr.js',
     	'https://lampame.github.io/main/nc/nc.js',
         'https://nb557.github.io/plugins/rating.js',
-        'https://example.com/another-script.js'
         'https://idavlaff.github.io/lampa/plugins/interface.js',
         'https://idavlaff.github.io/lampa/plugins/cardify.js',
         'https://idavlaff.github.io/lampa/plugins/inquality.js',
