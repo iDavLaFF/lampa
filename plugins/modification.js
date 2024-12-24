@@ -39,4 +39,3 @@ $(document).ready(function() {
         $('[data-action=sisi_]').eq(0).show();
     }
 });
-}
