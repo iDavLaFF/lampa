@@ -4,8 +4,8 @@ Lampa.SettingsApi.addParam({
         name: 'SISI_fix',
         type: 'select',
         values: {
-            1: 'Скрыть из меню',
-            2: 'Отображать в меню',
+            1: 'Скрыть',
+            2: 'Отображать',
         },
         default: '1',
     },
