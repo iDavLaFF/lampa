@@ -9,7 +9,7 @@
 // @LME thanks. Public parsers
         'https://lampame.github.io/main/pubtorr/pubtorr.js?v=' + Math.random(),
 // @LME thanks. new categories & collection button for 'franchises'
-        'https://lampame.github.io/main/nc/nc.js?v=' + Math.random(),
+//        'https://lampame.github.io/main/nc/nc.js?v=' + Math.random(),
 // @LME thanks. torrents to Infuse saver (iOS/macOS). !NB 'Save all' need 'shortcut': https://www.icloud.com/shortcuts/406d7f6bdfcf466da153a38dea6bb663 
         'https://lampame.github.io/main/its/its.js?v=' + Math.random(),
 // @NB557 thanks. 'KPrating.plugin' !NB Need update 'cause not work with 'cardify'
