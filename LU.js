@@ -13,7 +13,7 @@
 // @LME thanks. torrents to Infuse saver (iOS/macOS). !NB 'Save all' need 'shortcut': https://www.icloud.com/shortcuts/406d7f6bdfcf466da153a38dea6bb663 
         'https://lampame.github.io/main/its/its.js?v=' + Math.random(),
 // @NB557 thanks. 'KPrating.plugin' !NB Need update 'cause not work with 'cardify'
-//        'https://nb557.github.io/plugins/rating.js',
+        'https://nb557.github.io/plugins/rating.js',
 // @LAMPAC thanks. !NB Timecode work only in torrents
         'https://idavlaff.github.io/lampa/plugins/timecode.js?v=' + Math.random(),
 // @BWA thanks. Add 'Strawberry.plugin'
