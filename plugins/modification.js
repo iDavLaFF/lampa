@@ -1,3 +1,4 @@
+@@ -1 +1,54 @@
     Lampa.SettingsApi.addComponent({
         component: 'sisi',
         name: '18+',
@@ -16,20 +17,39 @@
         },
         field: {
             name: 'Клубничка',
+            description: 'Плагин с видео 18+',
         },
         onChange: function(value) {
             if (Lampa.Storage.field('SISI_fix') == 2) {
-                setTimeout(function() {
-                    $('#app > div.wrap.layer--height.layer--width > div.wrap__left.layer--height > div > div > div > div > div:nth-child(1) > ul > li:contains("Клубничка")').show();
-                }, 2500);
+                Lampa.ParentalControl.personal('extensions', function () {
+                var pluginsArray = Lampa.Storage.get('plugins');
+                pluginsArray.push({
+                    url: 'https://idavlaff.github.io/lampa/plugins/sisi.js',
+                    name: 'Клубничка',
+                    status: 1
+                });
+                Lampa.Storage.set('plugins', pluginsArray);
+                location.reload();
+                 },  function () {
+         $('.settings-param__value').html('Скрыть из меню');
+         Lampa.Storage.set('SISI_fix', 1);
+          }, true);
             }
-            if (Lampa.Storage.field('SISI_fix') == 2)
-                $('[data-action=sisi_]').eq(0).show();
-            
             if (Lampa.Storage.field('SISI_fix') == 1) {
-                setTimeout(function() {
-                    $('#app > div.wrap.layer--height.layer--width > div.wrap__left.layer--height > div > div > div > div > div:nth-child(1) > ul > li:contains("Клубничка")').hide();
-                }, 2500);
+                var plugSisiArray = Lampa.Storage.get('plugins');
+                var delpluginSisi = plugSisiArray.filter(function(obj) {
+                    return obj.url !== 'https://idavlaff.github.io/lampa/plugins/sisi.js';
+                });
+                Lampa.Storage.set('plugins', delpluginSisi);
+                location.reload();
             }
-            if (Lampa.Storage.field('SISI_fix') == 1)
-                $('[data-action=sisi_]').eq(0).hide();
+        },
+    });
+
+    if (Lampa.Storage.field('SISI_fix') == 1) {
+        setTimeout(function() {
+            $('#app > div.wrap.layer--height.layer--width > div.wrap__left.layer--height > div > div > div > div > div:nth-child(1) > ul > li:contains("Клубничка")').hide();
+        }, 2500);
+    }
+    if (Lampa.Storage.field('SISI_fix') == 1)
+        $('[data-action=sisi_]').eq(0).hide();
