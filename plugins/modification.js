@@ -31,16 +31,3 @@ Lampa.SettingsApi.addParam({
         }
     },
 });
-
-// Инициализация видимости при загрузке
-$(document).ready(function() {
-    if (Lampa.Storage.field('SISI_fix') == 1) {
-        // Скрыть "Клубничка", если установлено значение "Скрыть"
-        $('#app > div.wrap.layer--height.layer--width > div.wrap__left.layer--height > div > div > div > div > div:nth-child(1) > ul > li:contains("Клубничка")').hide();
-        $('[data-action=sisi_]').eq(0).hide();
-    } else if (Lampa.Storage.field('SISI_fix') == 2) {
-        // Показать "Клубничка", если установлено значение "Отображать"
-        $('#app > div.wrap.layer--height.layer--width > div.wrap__left.layer--height > div > div > div > div > div:nth-child(1) > ul > li:contains("Клубничка")').show();
-        $('[data-action=sisi_]').eq(0).show();
-    }
-});
