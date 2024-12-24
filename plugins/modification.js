@@ -1,7 +1,3 @@
-Lampa.SettingsApi.searchComponent({
-    component: 'sisi',
-});
-
 Lampa.SettingsApi.addParam({
     component: 'sisi',
     param: {
