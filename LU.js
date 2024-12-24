@@ -17,6 +17,7 @@
 // @LAMPAC thanks. !NB Timecode work only in torrents
         'https://idavlaff.github.io/lampa/plugins/timecode.js?v=' + Math.random(),
 // @BWA thanks. Add 'Strawberry.plugin'
+        'https://idavlaff.github.io/lampa/plugins/sisi.js,
         'https://idavlaff.github.io/lampa/plugins/modification.js?v=' + Math.random(),
 // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify' !NB 'cardify' without trailers, only cards beauty
         'https://idavlaff.github.io/lampa/plugins/beautify.js?v=' + Math.random(),
