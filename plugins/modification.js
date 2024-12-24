@@ -10,8 +10,7 @@ Lampa.SettingsApi.addParam({
         default: '1',
     },
     field: {
-        name: 'Клубничка',
-        description: 'Плагин с видео 18+',
+        name: 'Боковое меню',
     },
     onChange: function(value) {
         if (value == 2) { // Отображать
