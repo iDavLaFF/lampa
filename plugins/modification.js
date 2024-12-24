@@ -1,3 +1,5 @@
+Lampa.Storage.set('menu_hide','["Лента","Персоны","Релизы","Подписки","Расписание"]');
+
 Lampa.SettingsApi.addParam({
     component: 'sisi',
     param: {
