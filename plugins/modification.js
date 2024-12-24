@@ -20,7 +20,7 @@
         onChange: function(value) {
             if (Lampa.Storage.field('SISI_fix') == 2) {
                 setTimeout(function() {
-                    $('#app > div.wrap.layer--height.layer--width > div.wrap__left.layer--height > div > div > div > div > div:nth-child(1) > ul > li:contains("Клубничка")').hide();
+                    $('#app > div.wrap.layer--height.layer--width > div.wrap__left.layer--height > div > div > div > div > div:nth-child(1) > ul > li:contains("Клубничка")').show();
                 }, 2500);
             }
             if (Lampa.Storage.field('SISI_fix') == 2)
