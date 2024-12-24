@@ -15,11 +15,11 @@ Lampa.SettingsApi.addParam({
     onChange: function(value) {
         if (value == 2) { // Отображать
             // Показать пункт меню "Клубничка"
-            $('#app > div.wrap.layer--height.layer--width > div.wrap__left.layer--height > div > div > div > div > div:nth-child(1) > ul > li:contains("Клубничка")').show();
+            $('#app > div.wrap.layer--height.layer--width > div.wrap__left.layer--height > div > div > div > div > div:nth-child(1) > ul > li:contains('lampac_sisiname')').show();
             $('[data-action=sisi_]').eq(0).show();
         } else if (value == 1) { // Скрыть
             // Скрыть пункт меню "Клубничка"
-            $('#app > div.wrap.layer--height.layer--width > div.wrap__left.layer--height > div > div > div > div > div:nth-child(1) > ul > li:contains("Клубничка")').hide();
+            $('#app > div.wrap.layer--height.layer--width > div.wrap__left.layer--height > div > div > div > div > div:nth-child(1) > ul > li:contains('lampac_sisiname')').hide();
             $('[data-action=sisi_]').eq(0).hide();
         }
     },
