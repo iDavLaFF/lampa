@@ -1,4 +1,3 @@
-@@ -1 +1,54 @@
     Lampa.SettingsApi.addComponent({
         component: 'sisi',
         name: '18+',
