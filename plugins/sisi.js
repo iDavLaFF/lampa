@@ -802,16 +802,42 @@
         Lampa.SettingsApi.addParam({
           component: 'sisi',
           param: {
-            name: 'sisi_preview',
-            type: 'trigger',
-            values: '',
-            "default": true
+            name: 'sisi_hide',
+            type: 'select',
+            values: {
+                1: 'Скрыть',
+                2: 'Отображать',
+            },
+            "default": 1
           },
           field: {
-            name: 'Предпросмотр',
-            description: 'Показывать предпросмотр при наведение на карточку'
+            name: 'Отображать'
           },
-          onRender: function onRender(item) {}
+          onChange: function(value) {
+            if (Lampa.Storage.field('sisi_hide') == 2) {
+				Lampa.ParentalControl.personal('extensions', function () {
+                var pluginsArray = Lampa.Storage.get('plugins');
+                pluginsArray.push({
+                    url: 'https://idavlaff.github.io/lampa/plugins/sisi.js',
+					name: 'Клубничка',
+                    status: 1
+                });
+                Lampa.Storage.set('plugins', pluginsArray);
+                location.reload();
+				 },  function () {
+	     $('.settings-param__value').html('Скрыть из меню');
+         Lampa.Storage.set('sisi_hide', 1);
+          }, true);
+            }
+            if (Lampa.Storage.field('sisi_hide') == 1) {
+                var plugSisiArray = Lampa.Storage.get('plugins');
+                var delpluginSisi = plugSisiArray.filter(function(obj) {
+                    return obj.url !== 'https://idavlaff.github.io/lampa/plugins/sisi.js';
+                });
+                Lampa.Storage.set('plugins', delpluginSisi);
+                location.reload();
+            }
+	  },
         });
       }
 
