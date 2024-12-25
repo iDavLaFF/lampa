@@ -3,14 +3,15 @@
 
   var network = new Lampa.Reguest();
   var api_url = Lampa.Utils.protocol() + 'api.lkpma.xyz/collections/';
+  var img_base_url = Lampa.Utils.protocol() + 'img.lkpma.xyz/t/p/w300/';
 
   function main(params, oncomplete, onerror) {
     network.silent(api_url, function (data) {
       data.collection = true;
       data.total_pages = 1;
       data.results.forEach(function (element) {
-        element.poster_path = element.img;
-        element.backdrop_path = element.img;
+        element.poster_path = img_base_url + element.img;
+        element.backdrop_path = img_base_url + element.img;
       });
       oncomplete(data);
     }, onerror);
