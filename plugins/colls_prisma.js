@@ -107,8 +107,8 @@
       $('.menu .menu__list').eq(0).append(button);
     }
 
-    if (!window.prisma_colls_ready) {
-      window.prisma_colls_ready = true;
+    if (!window.prisma_collections_ready) {
+      window.prisma_collections_ready = true;
       addMenuItem();
     }
 
