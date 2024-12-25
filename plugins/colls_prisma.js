@@ -9,7 +9,7 @@
       data.collection = true;
       data.total_pages = 1;
       data.results.forEach(function (element) {
-        element.poster_path = 'https://img.lkpma.xyz/t/p/w300/' + element.img;
+        element.poster_path = Lampa.Utils.protocol() + 'img.lkpma.xyz/t/p/w300/' + element.img;
       });
       oncomplete(data);
     }, onerror);
