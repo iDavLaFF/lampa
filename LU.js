@@ -18,6 +18,8 @@
         'https://idavlaff.github.io/lampa/plugins/timecode.js',
 // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify' !NB 'cardify' without trailers, only cards beauty
         'https://idavlaff.github.io/lampa/plugins/beautify.js',
+// Add new category "Cartoons"
+        'https://idavlaff.github.io/lampa/plugins/menu/mult.js',
 // Add new category "4K releases"
         'https://idavlaff.github.io/lampa/plugins/menu/new4k.js',
 // @BWA thanks. Add 'Strawberry.plugin'
