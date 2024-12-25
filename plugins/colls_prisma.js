@@ -9,8 +9,11 @@
       data.collection = true;
       data.total_pages = 1;
       data.results.forEach(function (element) {
-        element.poster_path = 'https://img.lkpma.xyz/t/p/w300/' + element.img;
-        element.backdrop_path = 'https://img.lkpma.xyz/t/p/w300/' + element.img;
+        var imgPath = 'https://img.lkpma.xyz/t/p/w300/' + element.img;
+        element.poster_path = imgPath;
+        element.backdrop_path = imgPath;
+        element.poster_path = element.poster_path.replace('https://imagetmdb.com/t/p/w500/', '');
+        element.backdrop_path = element.backdrop_path.replace('https://imagetmdb.com/t/p/w500/', '');
       });
       oncomplete(data);
     }, onerror);
