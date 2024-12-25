@@ -22,7 +22,9 @@
         page: 1
       });
     });
+    
     var targetElement = $('.menu .menu__list').find('.menu__item[data-action="anime"]');
+    
     button.insertAfter(targetElement);
   }
 
