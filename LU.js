@@ -16,13 +16,13 @@
         'https://nb557.github.io/plugins/rating.js',
 // @LAMPAC thanks. !NB Timecode work only in torrents
         'https://idavlaff.github.io/lampa/plugins/timecode.js',
-// @BWA thanks. Add 'Strawberry.plugin'
-        'https://idavlaff.github.io/lampa/plugins/sisi.js',
-        'https://idavlaff.github.io/lampa/plugins/modification.js',
 // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify' !NB 'cardify' without trailers, only cards beauty
         'https://idavlaff.github.io/lampa/plugins/beautify.js',
 // Add new category "4K releases"
-        'https://idavlaff.github.io/lampa/plugins/menu/new4k.js'
+        'https://idavlaff.github.io/lampa/plugins/menu/new4k.js',
+// @BWA thanks. Add 'Strawberry.plugin'
+        'https://idavlaff.github.io/lampa/plugins/sisi.js',
+        'https://idavlaff.github.io/lampa/plugins/modification.js'
     ], function () { });
 
 })();
