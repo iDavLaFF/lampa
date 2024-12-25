@@ -1,6 +1,4 @@
 Lampa.Storage.set('menu_hide','["Лента","Персоны","Релизы","Подписки","Расписание"]');
-      
-$('[data-action="hd"]').insertBefore($('[data-action="catalog"]'));
 
 Lampa.SettingsApi.addParam({
     component: 'sisi',
