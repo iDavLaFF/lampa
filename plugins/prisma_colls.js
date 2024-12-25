@@ -5,7 +5,7 @@
   var api_url = 'https://api.lkpma.xyz/collections/';
 
   function main(params, oncomplete, onerror) {
-    network.silent(api_url + 'colls/' + params.page, function (data) {
+    network.silent(api_url + 'colls', function (data) {
       data.collection = true;
       data.total_pages = data.total_pages || 5;
       data.results.forEach(function (element) {
