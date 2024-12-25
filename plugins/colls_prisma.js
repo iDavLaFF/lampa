@@ -9,11 +9,8 @@
       data.collection = true;
       data.total_pages = 1;
       data.results.forEach(function (element) {
-        var imgPath = 'https://img.lkpma.xyz/t/p/w300/' + element.img;
-        element.poster_path = imgPath;
-        element.backdrop_path = imgPath;
-        element.poster_path = element.poster_path.replace('https://imagetmdb.com/t/p/w500/', '');
-        element.backdrop_path = element.backdrop_path.replace('https://imagetmdb.com/t/p/w500/', '');
+        element.poster_path = element.img;
+        element.backdrop_path = element.img;
       });
       oncomplete(data);
     }, onerror);
