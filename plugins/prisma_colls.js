@@ -1,8 +1,12 @@
 (function () {
   'use strict';
 
-  var network = new Lampa.Reguest();
-  var api_url = 'https://idavlaff.github.io/lampa/plugins/prisma_colls.json';
+  var Defined = {
+    use_api: 'lampac',
+    localhost: = 'https://idavlaff.github.io/lampa/plugins/prisma_colls.json',
+    vip_site: '',
+    framework: ''
+  };
 
   function main(params, oncomplete, onerror) {
     network.silent(api_url + '?page=' + params.page, function (data) {
