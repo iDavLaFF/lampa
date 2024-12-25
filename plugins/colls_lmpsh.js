@@ -2,12 +2,12 @@
   'use strict';
 
   var network = new Lampa.Reguest();
-  var api_url = 'https://api.lampishe.cc/collections/main';
+  var api_url = Lampa.Utils.protocol() + 'api.lampishe.cc/collections/';
 
   function main(params, oncomplete, onerror) {
-    network.silent(api_url + '?page=' + params.page, function (data) {
+    network.silent(api_url, function (data) {
       data.collection = true;
-      data.total_pages = data.total_pages || 5;
+      data.total_pages = 1;
       data.results.forEach(function (element) {
         element.poster_path = element.img;
         element.backdrop_path = element.img;
@@ -17,8 +17,8 @@
   }
 
   function full(params, oncomplete, onerror) {
-    network.silent(api_url + params.url + '?page=' + params.page, function (data) {
-      data.total_pages = data.total_pages || 15;
+    network.silent(api_url + '/colls/' + params.url, function (data) {
+      data.total_pages = 1;
       oncomplete(data);
     }, onerror);
   }
@@ -51,7 +51,7 @@
         Lampa.Activity.push({
           url: element.hpu,
           title: element.title,
-          component: 'lampishe_coll',
+          component: 'lampishe_collection',
           page: 1
         });
       };
@@ -80,11 +80,11 @@
       version: '1.1.1',
       name: 'Подборки LAMPISHE',
       description: '',
-      component: 'lampishe_colls'
+      component: 'lampishe_collections'
     };
     Lampa.Manifest.plugins = manifest;
-    Lampa.Component.add('prisma_colls', component$1);
-    Lampa.Component.add('prisma_coll', component);
+    Lampa.Component.add('lampishe_collections', component$1);
+    Lampa.Component.add('lampishe_collection', component);
 
     function addMenuItem() {
       var button = $('<li class="menu__item selector"></li>');
@@ -96,21 +96,19 @@
       button.append(icon);
       button.append(text);
 
-        // Обработчик для клика и фокуса
       button.on('hover:enter', function () {
         Lampa.Activity.push({
           url: '',
           title: manifest.name,
-          component: 'lampishe_colls',
+          component: 'lampishe_collections',
           page: 1
         });
       });
-
       $('.menu .menu__list').eq(0).append(button);
     }
 
-    if (!window.prisma_colls_ready) {
-      window.prisma_colls_ready = true;
+    if (!window.lampishe_collections_ready) {
+      window.lampishe_collections_ready = true;
       addMenuItem();
     }
 
