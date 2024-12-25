@@ -44,7 +44,7 @@
 
     comp.cardRender = function (object, element, card) {
       element.poster_path = 'https://img.lkpma.xyz/t/p/w300/' + element.img;
-      
+
       card.onMenu = false;
 
       card.onEnter = function () {
