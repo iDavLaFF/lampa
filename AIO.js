@@ -21,7 +21,7 @@
 // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify' !NB 'cardify' without trailers, only cards beauty
         'https://idavlaff.github.io/lampa/plugins/beautify.js?v=' + Math.random(),
 // Add new category "4K releases"
-        'https://idavlaff.github.io/lampa/plugins/new4k.js?v=' + Math.random()
+        'https://idavlaff.github.io/lampa/plugins/menu/new4k.js?v=' + Math.random()
     ], function () { });
 
 })();
