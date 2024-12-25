@@ -9,8 +9,6 @@
       data.collection = true;
       data.total_pages = 1;
       data.results.forEach(function (element) {
-        element.poster_path = element.img;
-        element.backdrop_path = element.img;
       });
       oncomplete(data);
     }, onerror);
@@ -45,6 +43,8 @@
     };
 
     comp.cardRender = function (object, element, card) {
+      element.poster_path = 'https://img.lkpma.xyz/t/p/w300/' + element.img;
+      
       card.onMenu = false;
 
       card.onEnter = function () {
