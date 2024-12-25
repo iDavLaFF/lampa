@@ -51,7 +51,7 @@
         Lampa.Activity.push({
           url: element.hpu,
           title: element.title,
-          component: 'prisma_coll',
+          component: 'lampishe_coll',
           page: 1
         });
       };
@@ -78,9 +78,9 @@
     var manifest = {
       type: 'video',
       version: '1.1.1',
-      name: 'Подборки PRISMA',
+      name: 'Подборки LAMPISHE',
       description: '',
-      component: 'prisma_colls'
+      component: 'lampishe_colls'
     };
     Lampa.Manifest.plugins = manifest;
     Lampa.Component.add('prisma_colls', component$1);
@@ -101,7 +101,7 @@
         Lampa.Activity.push({
           url: '',
           title: manifest.name,
-          component: 'prisma_colls',
+          component: 'lampishe_colls',
           page: 1
         });
       });
