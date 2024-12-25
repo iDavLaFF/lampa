@@ -22,10 +22,10 @@
         page: 1
       });
     });
-    
-    var targetElement = $('.menu .menu__list').find('.menu__item[data-action="anime"]');
-    
-    button.insertAfter(targetElement);
+    $('.menu .menu__list').eq(0).append(button);
+    setTimeout(function () {
+      $('[data-action=mult]').insertBefore($('[data-action=catalog]'));
+    }, 2000);
   }
 
   if (window.appready) add();
