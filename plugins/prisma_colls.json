@@ -2,7 +2,7 @@
     "secuses":true,
     "results":[
        {
-          "hpu":"https://api.lkpma.xyz/collections//colls/hbo.json",
+          "hpu":"https://api.lkpma.xyz/collections/colls/hbo.json",
           "title":"Шедевры HBO",
           "type":"movie",
           "meta_title":"HBO",
