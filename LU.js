@@ -26,7 +26,8 @@
         'https://idavlaff.github.io/lampa/plugins/menu/new4k.js',
 // @BWA thanks. Add 'Strawberry.plugin'
         'https://idavlaff.github.io/lampa/plugins/sisi.js',
-        'https://idavlaff.github.io/lampa/plugins/modification.js'
+// Some personal interface modifications
+        'https://idavlaff.github.io/lampa/plugins/fix.js'
     ], function () { });
 
 })();
