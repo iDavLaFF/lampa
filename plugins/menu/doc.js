@@ -25,7 +25,7 @@
     });
     $('.menu .menu__list').eq(0).append(button);
     setTimeout(function () {
-      $('[data-action="doc"]').insertAfter($('[data-action="movie"]'));
+      $('[data-action=doc]').insertAfter($('[data-action=movie]'));
     }, 2000);
   }
 
