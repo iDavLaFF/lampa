@@ -26,7 +26,7 @@
     $('.menu .menu__list').eq(0).append(button);
     setTimeout(function () {
       $('[data-action=doc]').insertAfter($('[data-action=movie]'));
-    }, 1000);
+    }, 2000);
   }
 
   if (window.appready) add();
