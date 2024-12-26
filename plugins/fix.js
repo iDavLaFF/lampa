@@ -26,7 +26,6 @@ Lampa.Listener.follow('app', function (e) {
             $('[data-action=subscribes]').eq(0).remove();
             $('[data-action=timetable]').eq(0).remove();
             $('[data-action=console]').eq(0).remove();
-            $('[data-action=anime]').insertBefore($('[data-action=catalog]'));
         }, 10);
     }
 });
