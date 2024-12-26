@@ -27,7 +27,7 @@ Lampa.Listener.follow('app', function (e) {
             $('[data-action=timetable]').eq(0).remove();
             $('[data-action=console]').eq(0).remove();
             $('[data-action=anime]').insertAfter($('[data-action=mult]'));
-        }, 10);
+        }, 2010);
     }
 });
 
