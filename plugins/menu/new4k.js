@@ -25,7 +25,7 @@
     $('.menu .menu__list').eq(0).append(button);
     setTimeout(function () {
       $('[data-action=hd]').insertBefore($('[data-action=catalog]'));
-    }, 2000);
+    }, 600);
   }
 
   if (window.appready) add();
