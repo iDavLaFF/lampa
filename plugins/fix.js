@@ -16,7 +16,7 @@ setTimeout(function () {
     $('.open--notice').remove();
   }, 1000);
 
-// Удаляем ненужные разделы из бокового меню
+// Удаляем ненужные разделы из бокового меню, и перемещаем Аниме после Мультфильмов
 Lampa.Listener.follow('app', function (e) {
     if (e.type == 'ready') {
         setTimeout(function () {
@@ -26,6 +26,7 @@ Lampa.Listener.follow('app', function (e) {
             $('[data-action=subscribes]').eq(0).remove();
             $('[data-action=timetable]').eq(0).remove();
             $('[data-action=console]').eq(0).remove();
+            $('[data-action=anime]').insertAfter($('[data-action=mult]'));
         }, 10);
     }
 });
