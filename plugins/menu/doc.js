@@ -24,9 +24,6 @@
       });
     });
     $('.menu .menu__list').eq(0).append(button);
-    setTimeout(function () {
-      $('[data-action="movie"]').insertBefore($('[data-action="mult"]'));
-    }, 2000);
   }
 
   if (window.appready) add();
