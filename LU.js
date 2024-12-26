@@ -2,10 +2,10 @@
     'use strict';
 
     Lampa.Utils.putScriptAsync([
-        'http://bylampa.github.io/tmdb-proxy.js',
-        'http://bylampa.github.io/account.js',
+        'https://bylampa.github.io/tmdb-proxy.js',
+        'https://bylampa.github.io/account.js',
 // @CUB thanks for all of your work
-        'http://cub.red/plugin/tracks',
+        'https://cub.red/plugin/tracks',
 // @LME thanks. Public parsers
         'https://lampame.github.io/main/pubtorr/pubtorr.js',
 // @LME thanks. new categories & collection button for 'franchises'
@@ -18,10 +18,10 @@
         'https://idavlaff.github.io/lampa/plugins/timecode.js',
 // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify' !NB 'cardify' without trailers, only cards beauty
         'https://idavlaff.github.io/lampa/plugins/beautify.js',
-// Add new category "Cartoons"
-        'https://idavlaff.github.io/lampa/plugins/menu/mult.js',
 // Add new category "Documentary"
         'https://idavlaff.github.io/lampa/plugins/menu/doc.js',
+// Add new category "Cartoons"
+        'https://idavlaff.github.io/lampa/plugins/menu/mult.js',
 // Add new category "4K releases"
         'https://idavlaff.github.io/lampa/plugins/menu/new4k.js',
 // @BWA thanks. Add 'Strawberry.plugin'
