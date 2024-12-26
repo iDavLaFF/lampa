@@ -23,7 +23,7 @@
 // Add new category "Cartoons"
         'https://idavlaff.github.io/lampa/plugins/menu/mult.js',
 // Add new category "4K releases"
-        'https://idavlaff.github.io/lampa/plugins/menu/new4k.js',
+//        'https://idavlaff.github.io/lampa/plugins/menu/new4k.js',
 // @BWA thanks. Add 'Strawberry.plugin'
         'https://idavlaff.github.io/lampa/plugins/sisi.js',
 // Some personal interface modifications
