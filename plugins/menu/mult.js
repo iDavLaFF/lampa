@@ -26,7 +26,7 @@
     $('.menu .menu__list').eq(0).append(button);
     setTimeout(function () {
       $('[data-action=mult]').insertAfter($('[data-action=tv]'));
-    }, 2000);
+    }, 550);
   }
 
   if (window.appready) add();
