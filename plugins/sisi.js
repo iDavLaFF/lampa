@@ -521,7 +521,7 @@
 
     this.menu = function(success, error) {
       if (menu) return success(menu);
-      network.silent(this.account(Defined.localhost), function(data) {
+      network.silent(this.account(Defined.localhost)+'&rchtype='+window.rchtype, function(data) {
         if (data.channels) {
           menu = data.channels;
           success(menu);
@@ -943,7 +943,7 @@
             // }]
             var items = [];
 
-            if (Defined.use_api == 'lampac' || Lampa.Platform.is('android')) {
+            if (false && (Defined.use_api == 'lampac' || Lampa.Platform.is('android'))) {
               items.push({
                 title: 'Все'
               });
