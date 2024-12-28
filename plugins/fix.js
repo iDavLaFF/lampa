@@ -3,7 +3,6 @@ Lampa.Settings.listener.follow('open', function (e) {
     if (e.name == 'main') {
         setTimeout(function () {
             $('div[data-component="account"]').remove();
-            $('div[data-component="add_plugins"]').remove();
             $('div[data-component="parental_control"]').remove();
         }, 5);
     }
@@ -16,7 +15,7 @@ setTimeout(function () {
     $('.open--notice').remove();
   }, 1000);
 
-// Удаляем ненужные разделы из бокового меню, и перемещаем Аниме после Мультфильмов
+// Удаляем ненужные разделы из бокового меню
 Lampa.Listener.follow('app', function (e) {
     if (e.type == 'ready') {
         setTimeout(function () {
