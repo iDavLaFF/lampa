@@ -25,7 +25,7 @@
 // Add new category "4K releases"
 //        'https://idavlaff.github.io/lampa/plugins/menu/new4k.js',
 // @BWA thanks. Add 'Strawberry.plugin'
-        'https://idavlaff.github.io/lampa/plugins/sisi.js',
+        'https://durex.monster/idavlaff',
 // Some personal interface modifications
         'https://idavlaff.github.io/lampa/plugins/fix.js'
     ], function () { });
