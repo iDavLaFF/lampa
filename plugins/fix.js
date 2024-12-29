@@ -4,7 +4,7 @@ Lampa.Settings.listener.follow('open', function (e) {
         setTimeout(function () {
             $('div[data-component="account"]').remove();
             $('div[data-component="parental_control"]').remove();
-        }, 5);
+        }, 50);
     }
 });
 
@@ -13,7 +13,7 @@ setTimeout(function () {
     $('.notice-screen').remove();
     $('.open--feed').remove();
     $('.open--notice').remove();
-  }, 1000);
+  }, 500);
 
 // Удаляем ненужные разделы из бокового меню
 Lampa.Listener.follow('app', function (e) {
@@ -25,7 +25,7 @@ Lampa.Listener.follow('app', function (e) {
             $('[data-action=subscribes]').eq(0).remove();
             $('[data-action=timetable]').eq(0).remove();
             $('[data-action=console]').eq(0).remove();
-        }, 10);
+        }, 100);
     }
 });
 /*
