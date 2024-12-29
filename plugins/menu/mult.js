@@ -26,7 +26,7 @@
     $('.menu .menu__list').eq(0).append(button);
     setTimeout(function () {
       $('[data-action=mult]').insertBefore($('[data-action=anime]'));
-    }, 2000);
+    }, 1000);
   }
 
   if (window.appready) add();
