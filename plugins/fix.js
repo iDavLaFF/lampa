@@ -28,7 +28,7 @@ Lampa.Listener.follow('app', function (e) {
         }, 100);
     }
 });
-/*
+
 // Добавляем меню для скрытия/отображения категории "Клубничка"
 Lampa.SettingsApi.addParam({
     component: 'sisi',
@@ -69,4 +69,3 @@ $(document).ready(function() {
         $('[data-action=sisi_]').eq(0).show();
     }
 });
-*/
