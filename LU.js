@@ -23,13 +23,13 @@
 // Add new category "Cartoons"
         'https://idavlaff.github.io/lampa/plugins/menu/mult.js',
 // @AndreyURL54 thanks. Add menu sort functionality
-        'http://193.233.134.21/plugins/menusort',
+        'http://193.233.134.21/plugins/menusort'
 // Add new category "4K releases"
 //        'https://idavlaff.github.io/lampa/plugins/menu/new4k.js',
 // @BWA thanks. Add 'Strawberry.plugin'
 //        'https://durex.monster/on/idavlaff',
 // Some personal interface modifications
-        'https://idavlaff.github.io/lampa/plugins/fix.js'
+//        'https://idavlaff.github.io/lampa/plugins/fix.js'
     ], function () { });
 
 })();
