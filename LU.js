@@ -19,7 +19,7 @@
 // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify' !NB 'cardify' without trailers, only cards beauty
         'https://idavlaff.github.io/lampa/plugins/beautify.js',
 // Add new category "Documentary"
-        'https://idavlaff.github.io/lampa/plugins/menu/doc.js',
+//        'https://idavlaff.github.io/lampa/plugins/menu/doc.js',
 // Add new category "Cartoons"
         'https://idavlaff.github.io/lampa/plugins/menu/mult.js',
 // Add new category "4K releases"
