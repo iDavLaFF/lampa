@@ -24,9 +24,9 @@
       });
     });
     $('.menu .menu__list').eq(0).append(button);
-//    setTimeout(function () {
+    setTimeout(function () {
       $('[data-action=mult]').insertBefore($('[data-action=anime]'));
-//    }, 500);
+    }, 2000);
   }
 
   if (window.appready) add();
