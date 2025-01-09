@@ -25,7 +25,7 @@
     });
     $('.menu .menu__list').eq(0).append(button);
     setTimeout(function () {
-      $('[data-action=mult]').insertAfter($('[data-action=filter]'));
+      $('[data-action=mult]').insertBefore($('[data-action=anime]'));
     }, 1000);
   }
 
