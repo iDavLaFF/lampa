@@ -25,11 +25,11 @@
 // Add new category "Documentary"
 //        'https://idavlaff.github.io/lampa/plugins/menu/doc.js',
 // Add new category "Cartoons"
-        'https://idavlaff.github.io/lampa/plugins/menu/mult.js',
+        'https://idavlaff.github.io/lampa/plugins/menu/mult.js'
 // Some personal interface modifications
 //        'https://idavlaff.github.io/lampa/plugins/fix.js'
 // @LAMPAC thanks. Add online & 18+ balancers
-        'https://durex.monster'
+//        'https://durex.monster'
     ], function () { });
 
 })();
