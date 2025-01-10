@@ -19,7 +19,7 @@
 // @NB557 thanks. 'KPrating.plugin' !NB Need update 'cause not work with 'cardify'
         'https://nb557.github.io/plugins/rating.js',
 // @AndreyURL54 thanks. Add menu sort functionality
-        'https://193.233.134.21/plugins/menusort',
+        'http://193.233.134.21/plugins/menusort',
 // Add new category "4K releases"
 //        'https://idavlaff.github.io/lampa/plugins/menu/new4k.js',
 // Add new category "Documentary"
