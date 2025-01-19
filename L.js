@@ -33,4 +33,26 @@
 //        'https://durex.monster'
     ], function () { });
 
+function showReload(reloadText){
+Lampa.Modal.open({
+      title: '',
+      align: 'center',
+      zIndex: 300,
+      html: $('<div class="about">' + reloadText + '</div>'),
+      buttons: [{
+        name: 'Нет',
+        onSelect: function onSelect() {
+         //Lampa.Modal.close();
+          $('.modal').remove();
+	  Lampa.Controller.toggle('content')
+        }
+      }, {
+        name: 'Да',
+        onSelect: function onSelect() {
+          window.location.reload();
+        }
+      }]
+});
+}
+
 })();
