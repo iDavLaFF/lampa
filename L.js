@@ -17,8 +17,10 @@
         'https://idavlaff.github.io/lampa/plugins/beautify.js',
 // @NB557 thanks. 'KPrating.plugin' !NB Need update 'cause not work with 'cardify'
         'https://nb557.github.io/plugins/rating.js',
-// @AndreyURL54 thanks. Add menu sort functionality
+// @AndreyURL54 thanks. Add left menu sort functionality
         'http://193.233.134.21/plugins/menusort',
+// @AND7EY rhanks. Add head menu sort functionality
+        'https://and7ey.github.io/lampa/head_filter.js',
 // Add new category "4K releases"
 //        'https://idavlaff.github.io/lampa/plugins/menu/new4k.js',
 // Add new category "Documentary"
