@@ -17,6 +17,8 @@
 // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify' !NB 'cardify' without trailers, only cards beauty
         'https://idavlaff.github.io/lampa/plugins/beautify.js',
 // @NB557 thanks. 'KPrating.plugin' !NB Need update 'cause not work with 'cardify'
+// @BAZZZILIUS thanks. Add gold 'theme'
+        'https://bazzzilius.github.io/scripts/gold_theme.js'
         'https://nb557.github.io/plugins/rating.js',
 // @AndreyURL54 thanks. Add left menu sort functionality
         'http://193.233.134.21/plugins/menusort',
