@@ -13,9 +13,9 @@
 //        'https://lampame.github.io/main/its/its.js',
 // @LAMPAC thanks. !NB Timecode work only in torrents
         'https://idavlaff.github.io/lampa/plugins/timecode.js',
-// @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify' !NB 'cardify' without trailers, only cards beauty
+// @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify' @BYLAMPA thanks, fix rating issue
         'https://idavlaff.github.io/lampa/plugins/beautify.js',
-// @NB557 thanks. 'KPrating.plugin' !NB Need update 'cause not work with 'cardify'
+// @NB557 thanks. 'KPrating.plugin'
         'https://nb557.github.io/plugins/rating.js',
 // @AndreyURL54 thanks. Add left menu sort functionality
         'http://193.233.134.21/plugins/menusort',
