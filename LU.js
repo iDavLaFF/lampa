@@ -17,7 +17,7 @@
 // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, fix rating issue
         'https://idavlaff.github.io/lampa/plugins/beautify.js',
 // @BAZZZILIUS thanks. Add gold 'theme'
-        'https://bazzzilius.github.io/scripts/gold_theme.js'
+        'https://bazzzilius.github.io/scripts/gold_theme.js',
 // @NB557 thanks. 'KPrating.plugin'
         'https://nb557.github.io/plugins/rating.js',
 // @AndreyURL54 thanks. Add left menu sort functionality
