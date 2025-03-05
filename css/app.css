@@ -1281,61 +1281,77 @@ body.light--version .wrap__left {
   opacity: 0.5;
 }
 .head__actions {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
+  position: fixed; /* Фиксированное позиционирование */
+  left: 50%; /* Центрирование по горизонтали */
+  top: 0.5em; /* Отступ сверху */
+  transform: translateX(-50%); /* Точное центрирование */
+  z-index: 11; /* Уровень слоя */
   display: flex;
+  border-radius: 1.4em; /* Закруглённые углы */
+  padding: 1.2em; /* Внутренние отступы */
+  justify-content: space-around; /* Равномерное распределение элементов */
+  align-items: center; /* Центрирование по вертикали */
+  box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта "плавающего" элемента */
+  max-height: 80px; /* Максимальная высоты */
+  min-width: 950px; /* Убираем фиксированную минимальную ширину */
+  justify-content: center; /* Центрируем элементы внутри панели */
+  gap: 0.5em; /* Отступ между иконками по умолчанию */
 }
-@media screen and (max-width: 767px) {
-  .head__actions + .head__split {
-    display: none;
-  }
-}
-.head__title {
-  font-size: 1.7em;
-  font-weight: 300;
-  margin-right: auto;
-  white-space: nowrap;
-  overflow: hidden;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
-  line-height: 1.4;
-}
+
 .head__action {
-  width: 2.8em;
-  height: 2.8em;
-  -webkit-border-radius: 100%;
-     -moz-border-radius: 100%;
-          border-radius: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-     -moz-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-     -moz-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 0.6em;
-  margin-left: 1.5em;
-  -webkit-flex-shrink: 0;
-      -ms-flex-negative: 0;
-          flex-shrink: 0;
+  flex-direction: row; /* Иконка и текст располагаются горизонтально */
+  align-items: center; /* Центрирование по вертикали */
+  justify-content: center; /* Центрирование по горизонтали */
+  flex: 0 0 auto; /* Запрещаем элементам растягиваться */
+  padding: 0.5em; /* Внутренние отступы */
+  flex-shrink: 0;
+  transition: all 0.3s ease; /* Плавные переходы */
+  border-radius: 1.3em; /* Закруглённые углы для фона при наведении */
+  position: relative;
 }
-.head__action.focus, .head__action.hover {
-  background-color: #fff;
-  color: #000;
+
+.head__action svg, .head__action img {
+  width: 2.5em; /* Размер иконок */
+  height: 2.5em;
+  transition: margin 0.3s ease;
 }
+
+.head__action__name {
+  font-size: 1.2em; /* Размер текста */
+  white-space: nowrap; /* Текст не переносится */
+  opacity: 0; /* Скрываем текст по умолчанию */
+  transition: opacity 0.3s ease, margin-left 0.3s ease; /* Плавное появление текста */
+  margin-left: 0; /* Начальное состояние текста */
+  position: absolute;
+  left: 100%; /* Текст будет справа от иконки */
+}
+
+.head__action.focus,
+.head__action.hover {
+  background-color: rgba(0, 0, 0, 0.3); /* Лёгкий фон при наведении */
+  transform: scale(1.15); /* Увеличение элемента при наведении */
+  border-radius: 1.3em; /* Закруглённые углы для фона при наведении */
+  padding: 0.5em 0.8em; /* Увеличенные отступы */
+}
+
+.head__action.hover .head__action__name,
+.head__action.focus .head__action__name {
+  opacity: 1;
+  margin-left: 0.5em; /* Отступ между иконкой и текстом */
+
+}
+
+/* Сдвигаем соседние элементы при наведении */
+.head__action.hover ~ .head__action,
+.head__action.focus ~ .head__action {
+  transform: translateX(125px); /* Фиксированный сдвиг в пикселях */
+}
+
 .head__action.active {
   position: relative;
 }
+
 .head__action.active::after {
   content: "";
   display: block;
@@ -1344,53 +1360,39 @@ body.light--version .wrap__left {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #EA4E4E;
   border: 0.15em solid #fff;
-  -webkit-border-radius: 100%;
-     -moz-border-radius: 100%;
-          border-radius: 100%;
+  border-radius: 100%;
 }
+
 .head__action.open--profile {
   padding: 0.2em;
 }
+
 .head__action.open--profile img {
-  -webkit-border-radius: 100%;
-     -moz-border-radius: 100%;
-          border-radius: 100%;
+  border-radius: 100%;
   width: 2.4em;
   height: 2.4em;
 }
+
+@media screen and (max-width: 767px) {
+  .head__actions + .head__split {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .head__action {
     margin-left: 0.5em;
   }
-}
-.head__time {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  white-space: nowrap;
-  margin-top: -0.2em;
-}
-.head__time-now {
-  font-weight: 600;
-  font-size: 2em;
-  line-height: 0.9;
-  margin-right: 0.5em;
-}
-.head__time-date {
-  font-size: 0.9em;
-  line-height: 1;
-}
-.head__time-week {
-  font-size: 0.9em;
-  line-height: 1;
-}
-@media screen and (max-width: 767px) {
-  .head__time {
-    display: none;
+
+  .head__action svg,
+  .head__action img {
+    width: 1.5em; /* Уменьшаем размер иконок на маленьких экранах */
+    height: 1.5em;
+  }
+
+  .head__action__name {
+    font-size: 0.8em; /* Уменьшаем размер текста на маленьких экранах */
   }
 }
 
@@ -13989,6 +13991,23 @@ body.light--version .torrent-item__details {
   font-size: 0.95em;
 }
 
+body.glass--style .head__actions {
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(1.6em);
+          backdrop-filter: blur(1.6em);
+}
+body.glass--style .head__action {
+  background-color: transparent;
+}
+body.glass--style .head__action.focus,
+body.glass--style .head__action.hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Лёгкий фон при наведении */
+  color: #fff; /* Чёрный цвет текста при наведении */
+}
+body.glass--style .head__action.active::after {
+  border-color: #000;
+}
+
 body.glass--style .selectbox__content,
 body.glass--style .settings__content,
 body.glass--style .settings-input__content,
@@ -14132,9 +14151,4 @@ body.glass--style.platform--browser .card-watched__item:nth-child(4), body.glass
 }
 body.glass--style.platform--browser .card-watched__item:nth-child(5), body.glass--style.platform--nw .card-watched__item:nth-child(5), body.glass--style.platform--apple .card-watched__item:nth-child(5) {
   opacity: 0.2;
-}
-body.glass--style.platform--browser .head__action:not(.focus), body.glass--style.platform--nw .head__action:not(.focus), body.glass--style.platform--apple .head__action:not(.focus) {
-  background-color: rgba(0, 0, 0, 0.06);
-  -webkit-backdrop-filter: blur(1em);
-          backdrop-filter: blur(1em);
 }
