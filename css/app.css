@@ -1345,7 +1345,7 @@ body.light--version .wrap__left {
 /* Сдвигаем соседние элементы при наведении */
 .head__action.hover ~ .head__action,
 .head__action.focus ~ .head__action {
-  transform: translateX(6em); /* Фиксированный сдвиг в пикселях */
+  transform: translateX(6.5em); /* Фиксированный сдвиг в пикселях */
 }
 
 .head__action.active {
