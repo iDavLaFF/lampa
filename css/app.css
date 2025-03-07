@@ -1292,7 +1292,7 @@ body.light--version .wrap__left {
   justify-content: space-around; /* Равномерное распределение элементов */
   align-items: center; /* Центрирование по вертикали */
   box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта "плавающего" элемента */
-  max-height: 4em; /* Максимальная высоты */
+  max-height: 5em; /* Максимальная высоты */
   min-width: auto; /* Убираем фиксированную минимальную ширину */
   justify-content: center; /* Центрируем элементы внутри панели */
   gap: 0.5em; /* Отступ между иконками по умолчанию */
