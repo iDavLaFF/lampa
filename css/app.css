@@ -1293,7 +1293,7 @@ body.light--version .wrap__left {
   align-items: center; /* Центрирование по вертикали */
   box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта "плавающего" элемента */
   max-height: 5em; /* Максимальная высоты */
-  min-width: 80em; /* Убираем фиксированную минимальную ширину */
+  min-width: 70em; /* Убираем фиксированную минимальную ширину */
   justify-content: center; /* Центрируем элементы внутри панели */
   gap: 0.5em; /* Отступ между иконками по умолчанию */
 }
@@ -1345,7 +1345,7 @@ body.light--version .wrap__left {
 /* Сдвигаем соседние элементы при наведении */
 .head__action.hover ~ .head__action,
 .head__action.focus ~ .head__action {
-  transform: translateX(125px); /* Фиксированный сдвиг в пикселях */
+  transform: translateX(6em); /* Фиксированный сдвиг в пикселях */
 }
 
 .head__action.active {
