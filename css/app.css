@@ -1311,14 +1311,19 @@ body.true--mobile .head__action {
 }
 
 .navigation-bar {
-  position: fixed;
-  top: 0.5em;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  padding: 0 1em 1em 1em;
-  z-index: 11;
-  display: none;
+  position: fixed; /* Фиксированное позиционирование */
+  top: 0.25em; /* Отступ сверху */
+  transform: translateX(-50%); /* Точное центрирование */
+  left: 50%; /* Центрирование по горизонтали */
+  padding: 0 1.2em; /* Внутренние отступы */
+  z-index: 11; /* Уровень слоя */
+  display: flex;
+  justify-content: space-around; /* Равномерное распределение элементов */
+  align-items: center; /* Центрирование по вертикали */
+  max-height: 3em; /* Максимальная высоты */
+  min-width: 50em; /* Убираем фиксированную минимальную ширину */
+  justify-content: center; /* Центрируем элементы внутри панели */
+  gap: 1em; /* Отступ между иконками по умолчанию */
 }
 .navigation-bar__body {
   -webkit-border-radius: 1.4em;
@@ -1346,13 +1351,14 @@ body.true--mobile .head__action {
           flex-shrink: 0;
 }
 .navigation-bar__icon {
-  width: 1.8em;
-  height: 1.8em;
+  width: 2.5em;
+  height: 2.5em;
   margin: 0 auto;
 }
 .navigation-bar__label {
-  font-size: 0.9em;
-  margin-top: 0.9em;
+  font-size: 0.5em;
+  margin-top: 0.5em;
+  display: none;
 }
 
 body.true--mobile .navigation-bar {
