@@ -13974,7 +13974,9 @@ body.glass--style .head__action {
   background-color: transparent;
 }
 body.glass--style .head__action.focus,
-body.glass--style .head__action.hover {
+body.glass--style .head__action.hover,
+body.glass--style .navigation-bar__icon.hover,
+body.glass--style .navigation-bar__icon.focus {
   background-color: rgba(0, 0, 0, 0.3); /* Лёгкий фон при наведении */
   color: #fff; /* Чёрный цвет текста при наведении */
 }
@@ -14048,7 +14050,6 @@ body.glass--style-opacity--medium .settings__content,
 body.glass--style-opacity--medium .settings-input__content,
 body.glass--style-opacity--medium .modal__content,
 body.glass--style-opacity--medium .settings-input--free,
-body.glass--style-opacity--medium .navigation-bar__body,
 body.glass--style-opacity--medium .bell__item {
   background-color: rgba(20, 20, 20, 0.6);
   -webkit-backdrop-filter: blur(1.1em);
@@ -14075,7 +14076,6 @@ body.glass--style-opacity--blacked .settings__content,
 body.glass--style-opacity--blacked .settings-input__content,
 body.glass--style-opacity--blacked .modal__content,
 body.glass--style-opacity--blacked .settings-input--free,
-body.glass--style-opacity--blacked .navigation-bar__body,
 body.glass--style-opacity--blacked .bell__item {
   background-color: rgba(20, 20, 20, 0.9);
   -webkit-backdrop-filter: blur(0.5em);
