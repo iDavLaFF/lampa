@@ -13970,7 +13970,7 @@ body.glass--style .head__action {
 }
 body.glass--style .head__action.focus,
 body.glass--style .head__action.hover {
-  background-color: rgba(0, 0, 0, 0.5); /* Лёгкий фон при наведении */
+  background-color: rgba(0, 0, 0, 0.3); /* Лёгкий фон при наведении */
   color: #fff; /* Чёрный цвет текста при наведении */
 }
 body.glass--style .head__action.active::after {
