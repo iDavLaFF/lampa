@@ -1211,7 +1211,7 @@ body.light--version .wrap__left {
 .head__actions {
   position: fixed; /* Фиксированное позиционирование */
   left: 50%; /* Центрирование по горизонтали */
-  top: 0.5em; /* Отступ сверху */
+  top: 0.25em; /* Отступ сверху */
   transform: translateX(-50%); /* Точное центрирование */
   z-index: 11; /* Уровень слоя */
   display: flex;
