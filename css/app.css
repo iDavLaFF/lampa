@@ -1321,9 +1321,9 @@ body.true--mobile .head__action {
   justify-content: space-around; /* Равномерное распределение элементов */
   align-items: center; /* Центрирование по вертикали */
   max-height: 3em; /* Максимальная высоты */
-  min-width: 50em; /* Убираем фиксированную минимальную ширину */
+  min-width: 40em; /* Убираем фиксированную минимальную ширину */
   justify-content: center; /* Центрируем элементы внутри панели */
-  gap: 1em; /* Отступ между иконками по умолчанию */
+  gap: 0.5em; /* Отступ между иконками по умолчанию */
 }
 .navigation-bar__body {
   -webkit-border-radius: 1.4em;
@@ -1351,8 +1351,8 @@ body.true--mobile .head__action {
           flex-shrink: 0;
 }
 .navigation-bar__icon {
-  width: 2.5em;
-  height: 2.5em;
+  width: 2em;
+  height: 2em;
   margin: 0 auto;
 }
 .navigation-bar__label {
