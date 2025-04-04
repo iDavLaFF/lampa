@@ -1312,18 +1312,19 @@ body.true--mobile .head__action {
 
 .navigation-bar {
   position: fixed; /* Фиксированное позиционирование */
-  top: 0.25em; /* Отступ сверху */
+  top: 0.5em; /* Отступ сверху */
   transform: translateX(-50%); /* Точное центрирование */
   left: 50%; /* Центрирование по горизонтали */
-  padding: 0 1.2em; /* Внутренние отступы */
+  padding: 0 1.2em 1.2em 1.2em; /* Внутренние отступы */
   z-index: 11; /* Уровень слоя */
   display: flex;
+  border-radius: 1.4em; /* Закруглённые углы */
+  box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта "плавающего" элемента */
   justify-content: space-around; /* Равномерное распределение элементов */
   align-items: center; /* Центрирование по вертикали */
-  max-height: 3em; /* Максимальная высоты */
+  height: 4em; /* Максимальная высоты */
   min-width: 40em; /* Убираем фиксированную минимальную ширину */
   justify-content: center; /* Центрируем элементы внутри панели */
-  gap: 0.5em; /* Отступ между иконками по умолчанию */
 }
 .navigation-bar__body {
   -webkit-border-radius: 1.4em;
@@ -1343,6 +1344,7 @@ body.true--mobile .head__action {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
+  gap: 1em; /* Отступ между иконками по умолчанию */
 }
 .navigation-bar__item {
   -webkit-flex-shrink: 0;
@@ -1350,9 +1352,9 @@ body.true--mobile .head__action {
           flex-shrink: 0;
 }
 .navigation-bar__icon {
-  width: 2em;
-  height: 2em;
-  margin: 0 auto;
+  width: 2.5em;
+  height: 2.5em;
+  transform: translateY(25%); /* Точное центрирование */
 }
 .navigation-bar__label {
   font-size: 0.5em;
@@ -1360,33 +1362,27 @@ body.true--mobile .head__action {
   display: none;
 }
 
-body.true--mobile .navigation-bar {
-  display: block;
-}
-
-body.true--mobile.orientation--landscape .navigation-bar {
-  top: 0;
-  left: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 1.5em;
-  padding-left: 0;
-}
-body.true--mobile.orientation--landscape .navigation-bar .navigation-bar__body {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-     -moz-box-orient: vertical;
-     -moz-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-body.ambience--enable .navigation-bar {
-  visibility: hidden;
+/* Ландшафтный режим - навигационная панель справа */
+@media screen and (orientation: landscape) {
+  .navigation-bar {
+    left: auto; /* Отключаем центрирование по горизонтали */
+    right: 0.25em; /* Привязываем к правому краю с отступом */
+    top: 50%; /* Центрируем по вертикали */
+    transform: translateY(-50%); /* Точное вертикальное центрирование */
+    border-radius: 1.4em; /* Закруглённые углы */
+    box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта "плавающего" элемента */
+    flex-direction: column; /* Элементы в столбик */
+    min-width: auto; /* Сбрасываем минимальную ширину */
+    max-height: none; /* Сбрасываем максимальную высоту */
+    width: auto; /* Ширина по содержимому */
+    padding: 1.2em 0.5em; /* Внутренние отступы */
+  }
+  
+  .navigation-bar__body {
+    flex-direction: column; /* Элементы в столбик */
+    padding: 1.2em 0.8em; /* Внутренние отступы */
+    gap: 1em; /* Увеличиваем отступ между иконками */
+  }
 }
 
 .processing {
@@ -13980,12 +13976,14 @@ body.light--version .torrent-item__details {
   font-size: 0.95em;
 }
 
-body.glass--style .head__actions {
+body.glass--style .head__actions,
+body.glass--style .navigation-bar {
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(1.6em);
           backdrop-filter: blur(1.6em);
 }
-body.glass--style .head__action {
+body.glass--style .head__action,
+body.glass--style .navigation-bar__body {
   background-color: transparent;
 }
 body.glass--style .head__action.focus,
@@ -14004,7 +14002,6 @@ body.glass--style .settings__content,
 body.glass--style .settings-input__content,
 body.glass--style .modal__content,
 body.glass--style .settings-input--free,
-body.glass--style .navigation-bar__body,
 body.glass--style .discuss-rules,
 body.glass--style .bell__item {
   background-color: rgba(0, 0, 0, 0.3);
