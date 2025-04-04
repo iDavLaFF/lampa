@@ -1362,29 +1362,6 @@ body.true--mobile .head__action {
   display: none;
 }
 
-/* Ландшафтный режим - навигационная панель справа */
-@media screen and (orientation: landscape) {
-  .navigation-bar {
-    left: auto; /* Отключаем центрирование по горизонтали */
-    right: 0.25em; /* Привязываем к правому краю с отступом */
-    top: 50%; /* Центрируем по вертикали */
-    transform: translateY(-50%); /* Точное вертикальное центрирование */
-    border-radius: 1.4em; /* Закруглённые углы */
-    box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта "плавающего" элемента */
-    flex-direction: column; /* Элементы в столбик */
-    min-width: auto; /* Сбрасываем минимальную ширину */
-    max-height: none; /* Сбрасываем максимальную высоту */
-    width: auto; /* Ширина по содержимому */
-    padding: 1.2em 0.5em; /* Внутренние отступы */
-  }
-  
-  .navigation-bar__body {
-    flex-direction: column; /* Элементы в столбик */
-    padding: 1.2em 0.8em; /* Внутренние отступы */
-    gap: 1em; /* Увеличиваем отступ между иконками */
-  }
-}
-
 .processing {
   display: -webkit-box;
   display: -webkit-flex;
