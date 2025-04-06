@@ -1211,7 +1211,7 @@ body.light--version .wrap__left {
 .head__actions {
   position: fixed; /* Фиксированное позиционирование */
   left: 50%; /* Центрирование по горизонтали */
-  top: 0.25em; /* Отступ сверху */
+  top: 0.5em; /* Отступ сверху */
   transform: translateX(-50%); /* Точное центрирование */
   z-index: 11; /* Уровень слоя */
   display: flex;
@@ -1220,10 +1220,10 @@ body.light--version .wrap__left {
   justify-content: space-around; /* Равномерное распределение элементов */
   align-items: center; /* Центрирование по вертикали */
   box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта "плавающего" элемента */
-  max-height: 5em; /* Максимальная высоты */
+  max-height: 4.5em; /* Максимальная высоты */
   min-width: 70em; /* Убираем фиксированную минимальную ширину */
   justify-content: center; /* Центрируем элементы внутри панели */
-  gap: 0.5em; /* Отступ между иконками по умолчанию */
+  gap: 1em; /* Отступ между иконками по умолчанию */
 }
 
 .head__action {
@@ -1234,22 +1234,23 @@ body.light--version .wrap__left {
   flex: 0 0 auto; /* Запрещаем элементам растягиваться */
   padding: 0.5em; /* Внутренние отступы */
   flex-shrink: 0;
-  transition: all 0.3s ease; /* Плавные переходы */
+  transition: all 0.4s ease; /* Плавные переходы */
   border-radius: 1.3em; /* Закруглённые углы для фона при наведении */
   position: relative;
 }
 
 .head__action svg, .head__action img {
-  width: 2.5em; /* Размер иконок */
-  height: 2.5em;
-  transition: margin 0.3s ease;
+  width: 3em; /* Размер иконок */
+  height: 3em;
+  transition: margin 0.4s ease;
 }
 
 .head__action__name {
-  font-size: 1.2em; /* Размер текста */
+  font-size: 1.3em; /* Размер текста */
+  font-weight: 550; /* Жирный текст */
   white-space: nowrap; /* Текст не переносится */
   opacity: 0; /* Скрываем текст по умолчанию */
-  transition: opacity 0.3s ease, margin-left 0.3s ease; /* Плавное появление текста */
+  transition: opacity 0.4s ease, margin-left 0.4s ease; /* Плавное появление текста */
   margin-left: 0; /* Начальное состояние текста */
   position: absolute;
   left: 100%; /* Текст будет справа от иконки */
@@ -1257,7 +1258,7 @@ body.light--version .wrap__left {
 
 .head__action.focus,
 .head__action.hover {
-  background-color: rgba(0, 0, 0, 0.3); /* Лёгкий фон при наведении */
+  background-color: rgba(0, 0, 0, 0.2); /* Лёгкий фон при наведении */
   transform: scale(1.15); /* Увеличение элемента при наведении */
   border-radius: 1.3em; /* Закруглённые углы для фона при наведении */
   padding: 0.5em 0.8em; /* Увеличенные отступы */
@@ -1273,7 +1274,7 @@ body.light--version .wrap__left {
 /* Сдвигаем соседние элементы при наведении */
 .head__action.hover ~ .head__action,
 .head__action.focus ~ .head__action {
-  transform: translateX(6.5em); /* Фиксированный сдвиг в пикселях */
+  transform: translateX(7.2em); /* Фиксированный сдвиг в пикселях */
 }
 
 .head__action.active {
@@ -1313,18 +1314,19 @@ body.true--mobile .head__action {
 .navigation-bar {
   position: fixed; /* Фиксированное позиционирование */
   top: 0.5em; /* Отступ сверху */
-  transform: translateX(-50%); /* Точное центрирование */
   left: 50%; /* Центрирование по горизонтали */
-  padding: 0 1.2em 1.2em 1.2em; /* Внутренние отступы */
+  transform: translateX(-50%); /* Точное центрирование */
   z-index: 11; /* Уровень слоя */
   display: flex;
   border-radius: 1.4em; /* Закруглённые углы */
+  padding: 0 1.2em 1.2em 1.2em; /* Внутренние отступы */
   box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта "плавающего" элемента */
   justify-content: space-around; /* Равномерное распределение элементов */
   align-items: center; /* Центрирование по вертикали */
-  height: 4em; /* Максимальная высоты */
-  min-width: 40em; /* Убираем фиксированную минимальную ширину */
+  height: 5em; /* Максимальная высота */
+  min-width: 40em; /* Задаем фиксированную минимальную ширину */
   justify-content: center; /* Центрируем элементы внутри панели */
+  gap: 1.5em; /* Отступ между иконками по умолчанию */
 }
 .navigation-bar__body {
   -webkit-border-radius: 1.4em;
@@ -1344,7 +1346,7 @@ body.true--mobile .head__action {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
-  gap: 1em; /* Отступ между иконками по умолчанию */
+  gap: 1.5em; /* Отступ между иконками по умолчанию */
 }
 .navigation-bar__item {
   -webkit-flex-shrink: 0;
@@ -1352,9 +1354,9 @@ body.true--mobile .head__action {
           flex-shrink: 0;
 }
 .navigation-bar__icon {
-  width: 2.5em;
-  height: 2.5em;
-  transform: translateY(25%); /* Точное центрирование */
+  width: 3.5em;
+  height: 3.5em;
+  transform: translateY(20%); /* Точное центрирование */
 }
 .navigation-bar__label {
   font-size: 0.5em;
@@ -13955,20 +13957,27 @@ body.light--version .torrent-item__details {
 
 body.glass--style .head__actions,
 body.glass--style .navigation-bar {
-  background-color: rgba(0, 0, 0, 0.3);
-  -webkit-backdrop-filter: blur(1.6em);
-          backdrop-filter: blur(1.6em);
+  background-color: rgba(255, 255, 255, 0.15); /* Белый фон лучше передаёт стекло */
+  -webkit-backdrop-filter: blur(24px) saturate(180%); /* Добавим насыщенности */
+          backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 12px; /* Скруглённые углы усиливают эффект */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Лёгкая белая граница */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 
+              inset 0 0 0 1px rgba(255, 255, 255, 0.1); /* Двойная тень */
 }
 body.glass--style .head__action,
 body.glass--style .navigation-bar__body {
   background-color: transparent;
 }
 body.glass--style .head__action.focus,
-body.glass--style .head__action.hover,
-body.glass--style .navigation-bar__icon.hover,
-body.glass--style .navigation-bar__icon.focus {
-  background-color: rgba(0, 0, 0, 0.3); /* Лёгкий фон при наведении */
-  color: #fff; /* Чёрный цвет текста при наведении */
+body.glass--style .head__action.hover {
+  background-color: rgba(255, 255, 255, 0.25); /* Светлый фон при наведении */
+  color: #fff;
+  transform: translateY(-1px); /* Лёгкий подъём */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень при наведении */
+}
+body.glass--style .head__action.active {
+  background-color: rgba(255, 255, 255, 0.3); /* Более выраженный акцент */
 }
 body.glass--style .head__action.active::after {
   border-color: #000;
@@ -13987,8 +13996,8 @@ body.glass--style .bell__item {
 }
 @media screen and (max-width: 480px) {
   body.glass--style .selectbox__content,
-body.glass--style .modal__content,
-body.glass--style .settings__content {
+  body.glass--style .modal__content,
+  body.glass--style .settings__content {
     background-color: #262829;
   }
 }
