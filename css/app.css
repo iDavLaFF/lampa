@@ -1226,6 +1226,10 @@ body.light--version .wrap__left {
           flex-direction: row;
           align-items: center;
           justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+          backdrop-filter: blur(24px) saturate(150%);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
   border-radius: 1em;
   height: 4.5em;
   min-width: 90em;
@@ -1252,6 +1256,7 @@ body.light--version .wrap__left {
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
           flex-shrink: 0;
+  background-color: transparent;
 }
 
 .head__action > svg {
@@ -1273,8 +1278,8 @@ body.light--version .wrap__left {
 
 .head__action.focus,
 .head__action.hover {
-  background-color: rgba(0, 0, 0, 0.3);
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   animation: animation-trigger-enter 0.5s forwards;
 }
 /*
