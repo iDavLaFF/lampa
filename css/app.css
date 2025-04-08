@@ -1319,17 +1319,6 @@ body.light--version .wrap__left {
   }
 }
 
-/* iPad (в ландшафтном режиме) */
-@media screen and (min-width: 1025px) {
-  .head__action > svg {
-    width: 2.5em;
-    height: 2.5em;
-  }
-  .head__action > span {
-    font-size: 1.1em;
-  }
-}
-
 .navigation-bar {
   position: fixed; /* Фиксированное позиционирование */
   top: 0.5em; /* Отступ сверху */
