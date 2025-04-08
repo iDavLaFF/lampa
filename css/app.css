@@ -1287,12 +1287,47 @@ body.light--version .wrap__left {
   display: none;
 }*/
 
-body.true--mobile .head__logo-icon,
-body.true--mobile .head__menu-icon,
-body.true--mobile.orientation--landscape .head .head__body,
-body.true--mobile .head__actions,
-body.true--mobile .head__action {
-  display: none;
+/* iPhone (все размеры) */
+@media screen and (max-width: 767px) {
+  .head__actions {
+    height: 4em !important;
+    gap: 0.5em !important;
+    min-width: 35em !important;
+  }
+  .head__action > svg {
+    width: 2em !important;
+    height: 2em !important;
+  }
+  .head__action > span {
+    display: none;
+  }
+}
+
+/* iPhone (в ландшафтном режиме) iPad (в портретном режиме) */
+@media screen and (max-width: 1025px) {
+  .head__actions {
+    height: 5em;
+    gap: 0.75em;
+    min-width: 50em;
+  }
+  .head__action > svg {
+    width: 3.25em;
+    height: 3.25em;
+  }
+  .head__action > span {
+    display: none;
+  }
+}
+
+/* iPad (в ландшафтном режиме) */
+@media screen and (min-width: 1025px) {
+  .head__action > svg {
+    width: 2.5em;
+    height: 2.5em;
+  }
+  .head__action > span {
+    font-size: 1.1em;
+  }
 }
 
 .navigation-bar {
@@ -1301,7 +1336,7 @@ body.true--mobile .head__action {
   left: 50%; /* Центрирование по горизонтали */
   transform: translateX(-50%); /* Точное центрирование */
   z-index: 11; /* Уровень слоя */
-  display: flex;
+  display: none;
   border-radius: 1.4em; /* Закруглённые углы */
   padding: 0 1.2em 1.2em 1.2em; /* Внутренние отступы */
   box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта "плавающего" элемента */
