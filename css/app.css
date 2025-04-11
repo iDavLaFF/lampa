@@ -1303,7 +1303,7 @@ body.light--version .wrap__left {
   }
 }
 
-/* iPhone (в ландшафтном режиме) iPad (в портретном режиме) */
+/* iPhone (в ландшафтном режиме) iPad (в портретном режиме)
 @media screen and (max-width: 1025px) {
   .head__actions {
     height: 5em;
@@ -1318,7 +1318,7 @@ body.light--version .wrap__left {
     display: none;
   }
 }
-
+*/
 .navigation-bar {
   position: fixed; /* Фиксированное позиционирование */
   top: 0.5em; /* Отступ сверху */
