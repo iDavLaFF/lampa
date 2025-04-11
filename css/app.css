@@ -13968,7 +13968,7 @@ body.glass--style .navigation-bar {
   background-color: rgba(0, 0, 0, 0.1);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
           backdrop-filter: blur(24px) saturate(150%);
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1); /* Двойная тень */
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 body.glass--style .head__action,
 body.glass--style .navigation-bar__body {
@@ -13976,8 +13976,8 @@ body.glass--style .navigation-bar__body {
 }
 body.glass--style .head__action.focus,
 body.glass--style .head__action.hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Светлый фон при наведении */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1); /* Двойная тень */
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 body.glass--style .selectbox__content,
