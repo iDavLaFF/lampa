@@ -30,9 +30,6 @@
     <link rel="stylesheet" href="css/app.css?v=4.56">
 </head>
 <body>
-    <script>
-        window.youtube_lazy_load = true
-    </script>
 
     <div class="welcome"></div>
 
@@ -45,7 +42,6 @@
         <div class="no-network__desc">Не удалось загрузить файл: <span class="no-network__file"></span></div>
     </div>
     
-    <script src="./webos/webOSTV.js"></script>
     <script src="./vender/jquery/jquery.js"></script>
     <script src="./vender/notify/notify.js"></script>
     <script src="./vender/scrollbar/jquery.scrollbar.js"></script>
@@ -109,7 +105,7 @@
         }
 
         function loadCurrentLampa() {
-            putScript('app.min.js?v=' + cache_version, function () {})
+            putScript('app.js?v=' + cache_version, function () {})
         }
 
         function loadLocalLampa(){
@@ -134,7 +130,7 @@
             )
 
             putScript(
-                urlJoin(lampa_url, 'app.min.js?v=' + cache_version),
+                urlJoin(lampa_url, 'app.js?v=' + cache_version),
                 function () {
                     var css = urlJoin(lampa_url, 'css/app.css?v=' + cache_version)
 
@@ -142,7 +138,7 @@
                 },
                 function () {
                     putScript(
-                        urlJoin(lampa_url, 'lampa-main/app.min.js?v=' + cache_version),
+                        urlJoin(lampa_url, 'lampa-main/app.js?v=' + cache_version),
                         function () {
                             var css = urlJoin(lampa_url, 'lampa-main/css/app.css?v=' + cache_version)
 
