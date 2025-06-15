@@ -38,6 +38,7 @@ function startSet() {
   const settings = {
     set: 'true',
     language: 'ru',
+    cub_domain: 'kurwa-bober.ninja',
     interface_size: 'small',
     background: 'false',
     black_style: 'false',
