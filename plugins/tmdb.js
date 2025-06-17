@@ -1,13 +1,13 @@
 (function () {
     'use strict';
 
-    var domain = 'idavlampa.ru';
+    var domain = 'cub.rip';
     var tmdb_proxy = {
       name: 'TMDB Proxy',
-      version: '1.0.4',
-      description: 'Проксирование TMDB',
-      path_image: 'imagetmdb.' + domain + '/',
-      path_api: 'apitmdb.' + domain + '/'
+      version: '1.0.3',
+      description: 'Проксирование постеров и API сайта TMDB',
+      path_image: Lampa.Account.hasPremium() ? 'imagetmdb.' + domain + '/' : 'imagetmdb.com/',
+      path_api: 'apitmdb.' + domain + '/3/'
     };
 
     function filter(u) {
@@ -16,19 +16,25 @@
       return s + e;
     }
 
+    function email() {
+      return Lampa.Storage.get('account', '{}').email || '';
+    }
+
     Lampa.TMDB.image = function (url) {
       var base = Lampa.Utils.protocol() + 'image.tmdb.org/' + url;
-      return filter(Lampa.Storage.field('proxy_tmdb') ? 
-             Lampa.Utils.protocol() + tmdb_proxy.path_image + url : 
-             base);
+      return Lampa.Utils.addUrlComponent(filter(Lampa.Storage.field('proxy_tmdb') ? Lampa.Utils.protocol() + tmdb_proxy.path_image + url : base), 'email=' + encodeURIComponent(email()));
     };
 
     Lampa.TMDB.api = function (url) {
       var base = Lampa.Utils.protocol() + 'api.themoviedb.org/3/' + url;
-      return filter(Lampa.Storage.field('proxy_tmdb') ? 
-             Lampa.Utils.protocol() + tmdb_proxy.path_api + url : 
-             base);
+      return Lampa.Utils.addUrlComponent(filter(Lampa.Storage.field('proxy_tmdb') ? Lampa.Utils.protocol() + tmdb_proxy.path_api + url : base), 'email=' + encodeURIComponent(email()));
     };
 
-    console.log('TMDB-Proxy');
+    Lampa.Settings.listener.follow('open', function (e) {
+      if (e.name == 'tmdb') {
+        e.body.find('[data-parent="proxy"]').remove();
+      }
+    });
+    console.log('TMDB-Proxy', 'started, enabled:', Lampa.Storage.field('proxy_tmdb'));
+
 })();
