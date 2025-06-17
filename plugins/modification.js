@@ -5,7 +5,7 @@ const plugins = [
   './plugins/interface.js', // @CUB thanks.
   './plugins/cardify.js', // @CUB thanks.
   './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add + fix & some edits.
-  window.location.protocol === 'https:' ? '' : 'http://smotret24.ru/online.js', // @SHOWY thanks. Online plugin
+  window.location.protocol === 'https:' ? 'https://bwa.to/rc' : 'http://smotret24.ru/online.js', // @SHOWY thanks. Online plugin
   window.location.protocol === 'https:' ? 'https://rc.bwa.to/sisi.js' : 'http://rc.bwa.to/sisi.js', // @IMMISTERIO thanks. 18+ plugins
   'https://skaz.tv/export.js' // @ELENATV1 thanks. Bookmarks & History backup plugin
 ];
@@ -39,7 +39,7 @@ function startSet() {
   const settings = {
     set: 'true',
     language: 'ru',
-    cub_domain: 'cub.rip',
+    cub_domain: 'kurwa-bober.ninja',
     interface_size: 'small',
     background: 'false',
     black_style: 'false',
