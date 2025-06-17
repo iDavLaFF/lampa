@@ -11043,13 +11043,11 @@
     }, function (call) {
       get$9('movie/top_rated', params, function (json) {
         json.title = Lang.translate('title_top_movie');
-        json.line_type = 'top';
         call(json);
       }, call);
     }, function (call) {
       get$9('tv/top_rated', params, function (json) {
         json.title = Lang.translate('title_top_tv');
-        json.line_type = 'top';
         call(json);
       }, call);
     }];
@@ -11074,94 +11072,348 @@
         results: books,
         title: params.url == 'tv' ? Lang.translate('title_continue') : Lang.translate('title_watched')
       };
-
-      if (params.url == 'tv') {
-        json.ad = 'notice', json.type = params.url;
-      }
-
       call(json);
-    }, function (call) {
-      if (params.url == 'tv' || params.url == 'anime') {
-        call({
-          results: TimeTable.lately().slice(0, 20),
-          title: Lang.translate('title_upcoming_episodes'),
-          nomore: true,
-          cardClass: function cardClass(_elem, _params) {
-            return new Episode(_elem, _params);
-          }
-        });
-      } else {
+    }, function (call) { // Блок 'Популярное'
+      if (params.genres === 16 && params.url === 'movie') {
+        get$9('discover/movie?sort_by=popularity.desc&without_keywords=210024|210027|222361&vote_count.gte=100', params, function (movies) {
+        get$9('discover/tv?sort_by=popularity.desc&without_keywords=210024|210027|222361&vote_count.gte=100', params, function (series) {
+          const combined = [...movies.results, ...series.results];
+          const json = {
+            ...movies,
+            results: combined,
+            title: Lang.translate('title_popular')
+          };
+          call(json);
+        }, call);
+        return;
+        }, call);
+        return;
+      }
+      if (params.url === 'movie') {
+        get$9('movie/popular', {...params, 'vote_count.gte': 100}, function (json) {
+          json.title = Lang.translate('title_popular');
+          call(json);
+        }, call);
+        return;
+      }
+      if (params.url === 'tv') {
+        get$9('trending/tv/week', {...params, 'vote_count.gte': 100}, function (json) {
+          json.title = Lang.translate('title_popular');
+          call(json);
+        }, call);
+        return;
+      }
+      call();
+    }, function (call) { // Блок 'Выбор зрителей'
+      if (params.genres === 16 && params.url === 'movie') {
+        get$9('discover/movie?sort_by=vote_count.desc&without_keywords=210024|210027|222361&vote_count.gte=100', params, function (movies) {
+        get$9('discover/tv?sort_by=vote_count.desc&without_keywords=210024|210027|222361&vote_count.gte=100', params, function (series) {
+          const combined = [...movies.results, ...series.results];
+          const json = {
+            ...movies,
+            results: combined,
+            title: 'Выбор зрителей'
+          };
+          call(json);
+        }, call);
+        return;
+        }, call);
+        return;
+      }
+      if (params.url === 'movie') {
+        get$9('discover/' + params.url + '?sort_by=vote_count.desc', params, function (json) {
+          json.title = 'Выбор зрителей';
+          call(json);
+        }, call);
+        return;
+      }
+      if (params.url === 'tv') {
+        get$9('discover/' + params.url + '?sort_by=vote_count.desc', params, function (json) {
+          json.title = 'Выбор зрителей';
+          call(json);
+        }, call);
+        return;
+      }
+      call();
+    }, function (call) { // Блок 'Топ'
+      get$9(params.url == 'movie' ? 'movie/top_rated' : 'tv/top_rated', params, function (json) {
+        json.title = Lang.translate('title_top_' + params.url);
+        call(json);
+      }, call);
+    }, function (call) { // Блок со студиями №1
+      if (params.genres === 16 && params.url === 'movie') {
+        get$9('discover/movie?with_companies=2|3|9383&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
+        get$9('discover/tv?with_networks=54|128&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
+          const combined = [...movies.results, ...series.results];
+          const json = {
+            ...movies,
+            results: combined,
+            title: 'Анимация Disney'
+          };
+          call(json);
+        }, call);
+        return;
+        }, call);
+        return;
+      }
+      if (params.url === 'movie') {
+        get$9('discover/' + params.url + '?with_watch_providers=350&watch_region=US&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Фильмы Apple TV+';
+          call(json);
+        }, call);
+        return;
+      }
+      if (params.url === 'tv') {
+        get$9('discover/' + params.url + '?with_networks=213&sort_by=popularity.desc&vote_count.gte=200', params, function (json) {
+          json.title = 'Сериалы Netflix';
+          call(json);
+        }, call);
+        return;
+      }
+      call();
+    }, function (call) { // Блок со студиями №2
+      if (params.genres === 16 && params.url === 'movie') {
+        get$9('discover/movie?with_companies=521|6704&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
+        get$9('discover/tv?with_networks=3353&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
+          const combined = [...movies.results, ...series.results];
+          const json = {
+            ...movies,
+            results: combined,
+            title: 'Анимация Universal'
+          };
+          call(json);
+        }, call);
+        return;
+        }, call);
+        return;
+      }
+      if (params.url === 'movie') {
+        get$9('discover/' + params.url + '?with_companies=174|12|9996|8296|10138&without_genres=16&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Фильмы Warner Bros.';
+          call(json);
+        }, call);
+        return;
+      }
+      if (params.url === 'tv') {
+        get$9('discover/' + params.url + '?with_networks=49&sort_by=popularity.desc&vote_count.gte=300', params, function (json) {
+          json.title = 'Сериалы HBO';
+          call(json);
+        }, call);
+        return;
+      }
+      call();
+    }, function (call) { // Блок со студиями №3
+      if (params.genres === 16 && params.url === 'movie') {
+        get$9('discover/movie?with_companies=2251&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
+        get$9('discover/tv?with_companies=2251&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
+          const combined = [...movies.results, ...series.results];
+          const json = {
+            ...movies,
+            results: combined,
+            title: 'Анимация Sony Pictures'
+          };
+          call(json);
+        }, call);
+        return;
+        }, call);
+        return;
+      }
+      if (params.url === 'movie') {
+        get$9('discover/' + params.url + '?with_companies=4|25120|591|828&without_genres=16&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Фильмы Paramount Pictures';
+          call(json);
+        }, call);
+        return;
+      }
+      if (params.url === 'tv') {
+        get$9('discover/' + params.url + '?with_watch_providers=350&watch_region=US&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Сериалы Apple TV+';
+          call(json);
+        }, call);
+        return;
+      }
+      call();
+    }, function (call) { // Блок со студиями №4
+      if (params.genres === 16 && params.url === 'movie') {
+        get$9('discover/movie?with_companies=174&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
+        get$9('discover/tv?with_networks=56|80&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
+          const combined = [...movies.results, ...series.results];
+          const json = {
+            ...movies,
+            results: combined,
+            title: 'Анимация Warner Bros.'
+          };
+          call(json);
+        }, call);
+        return;
+        }, call);
+        return;
+      }
+      if (params.url === 'movie') {
+        get$9('discover/' + params.url + '?with_companies=33|10127|521|508|56|923&without_genres=16&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Фильмы Universal Pictures';
+          call(json);
+        }, call);
+        return;
+      }
+      if (params.url === 'tv') {
+        get$9('discover/' + params.url + '?with_networks=1024&sort_by=popularity.desc&vote_count.gte=180', params, function (json) {
+          json.title = 'Сериалы Amazon Prime';
+          call(json);
+        }, call);
+        return;
+      }
+      call();
+    }, function (call) { // Блок со студиями №5
+      if (params.genres === 16 && params.url === 'movie') {
+        get$9('discover/movie?with_companies=8&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
+        get$9('discover/tv?with_networks=213&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
+          const combined = [...movies.results, ...series.results];
+          const json = {
+            ...movies,
+            results: combined,
+            title: 'Анимация Netflix'
+          };
+          call(json);
+        }, call);
+        return;
+        }, call);
+        return;
+      }
+      if (params.url === 'movie') {
+        get$9('discover/' + params.url + '?with_companies=1|2|3|25|420&without_genres=16&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Фильмы Disney';
+          call(json);
+        }, call);
+        return;
+      }
+      if (params.url === 'tv') {
+        get$9('discover/' + params.url + '?with_networks=2739&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Сериалы Disney+';
+          call(json);
+        }, call);
+        return;
+      }
+      call();
+    }, function (call) { // Блок со студиями №6
+      if (params.genres === 16 && params.url === 'movie') {
+        get$9('discover/movie?with_companies=2605&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
+        get$9('discover/tv?with_networks=13&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
+          const combined = [...movies.results, ...series.results];
+          const json = {
+            ...movies,
+            results: combined,
+            title: 'Анимация Paramount'
+          };
+          call(json);
+        }, call);
+        return;
+        }, call);
+        return;
+      }
+      if (params.url === 'movie') {
+        get$9('discover/' + params.url + '?with_companies=34|5|10761|559&without_genres=16&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Фильмы Sony Pictures';
+          call(json);
+        }, call);
+        return;
+      }
+      if (params.url === 'tv') {
+        get$9('discover/' + params.url + '?with_networks=4&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Сериалы BBC';
+          call(json);
+        }, call);
+        return;
+      }
+      call();
+    }, function (call) { // Блок со студиями №7
+      if (params.genres === 16 && params.url === 'movie') {
+        get$9('discover/movie?with_companies=762|21&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
+        get$9('discover/tv?with_networks=1024&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
+          const combined = [...movies.results, ...series.results];
+          const json = {
+            ...movies,
+            results: combined,
+            title: 'Анимация Amazon Studios'
+          };
+          call(json);
+        }, call);
+        return;
+        }, call);
+        return;
+      }
+      if (params.url === 'movie') {
+        get$9('discover/' + params.url + '?with_companies=1632&without_genres=16&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Фильмы Lionsgate';
+          call(json);
+        }, call);
+        return;
+      }
+      if (params.url === 'tv') {
+        get$9('discover/' + params.url + '?with_networks=6&sort_by=popularity.desc&vote_count.gte=150', params, function (json) {
+          json.title = 'Сериалы Peacock';
+          call(json);
+        }, call);
+        return;
+      }
+      call();
+    }, function (call) { // Блок со студиями №8
+      if (params.genres === 16 && params.url === 'movie') {
         call();
+        return;
       }
-    }, function (call) {
-      call({
-        results: recomend,
-        title: Lang.translate('title_recomend_watch')
-      });
-    }, function (call) {
-      if (params.url == 'movie') {
-        get$9('discover/' + params.url + '?with_release_type=1', params, function (json) {
-          json.title = Lang.translate('title_now_watch');
+      if (params.url === 'movie') {
+        get$9('discover/' + params.url + '?with_companies=762|21|10702&without_genres=16&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Фильмы Amazon Studios';
           call(json);
         }, call);
-      } else call();
-    }, function (call) {
-      get$9(params.url == 'movie' ? 'trending/movie/week' : 'trending/tv/week', params, function (json) {
-        json.title = Lang.translate('title_popular');
-
-        if (params.url == 'tv') {
-          json.ad = 'bot';
-          json.type = params.url;
-        }
-
-        call(json);
-      }, call);
-    }, function (call) {
-      get$9('discover/' + params.url + '?' + (params.url == 'movie' ? 'primary_release_year' : 'first_air_date_year') + '=' + (new Date().getFullYear() - 1), params, function (json) {
-        json.title = Lang.translate('title_last_year');
-        call(json);
-      }, call);
-    }, function (call) {
-      var lte = new Date().getFullYear() - 2 + '-12-31';
-      var gte = new Date().getFullYear() - 7 + '-01-01';
-      var reg = params.url == 'movie' ? 'primary_release_date' : 'first_air_date';
-      lte = reg + '.lte=' + lte;
-      gte = reg + '.gte=' + gte;
-      get$9('discover/' + params.url + '?' + lte + '&' + gte, params, function (json) {
-        json.title = Lang.translate('title_worth_rewatch');
-        call(json);
-      }, call);
-    }, function (call) {
-      var lte = new Date().getFullYear() - 2 + '-12-31';
-      var gte = new Date().getFullYear() - 7 + '-01-01';
-      var reg = params.url == 'movie' ? 'primary_release_date' : 'first_air_date';
-      lte = reg + '.lte=' + lte;
-      gte = reg + '.gte=' + gte;
-      get$9('discover/' + params.url + '?' + lte + '&' + gte + '&vote_average.gte=8&vote_average.lte=9', params, function (json) {
-        json.title = Lang.translate('title_hight_voite');
-        json.line_type = 'top';
-        call(json);
-      }, call);
-    }, function (call) {
-      if (params.genres) return call();
-
-      if (params.url == 'tv') {
-        get$9('trending/tv/week', params, function (json) {
-          json.title = Lang.translate('title_this_week');
-          call(json);
-        }, call);
-      } else {
-        get$9('movie/upcoming', params, function (json) {
-          json.title = Lang.translate('title_upcoming');
-          json.small = true;
-          json.wide = true;
-          json.results.forEach(function (card) {
-            card.promo = card.overview;
-            card.promo_title = card.title || card.name;
-          });
-          call(json);
-        }, call);
+        return;
       }
+      if (params.url === 'tv') {
+        get$9('discover/' + params.url + '?with_networks=453&sort_by=popularity.desc&vote_count.gte=150', params, function (json) {
+          json.title = 'Сериалы Hulu';
+          call(json);
+        }, call);
+        return;
+      }
+      call();
+    }, function (call) { // Блок со студиями №9
+      if (params.genres === 16 && params.url === 'movie') {
+        call();
+        return;
+      }
+      if (params.url === 'movie') {
+        get$9('discover/' + params.url + '?with_companies=41077&sort_by=popularity.desc&vote_count.gte=100', params, function (json) {
+          json.title = 'Фильмы A24';
+          call(json);
+        }, call);
+        return;
+      }
+      if (params.url === 'tv') {
+        get$9('discover/' + params.url + '?with_networks=67&sort_by=popularity.desc&vote_count.gte=150', params, function (json) {
+          json.title = 'Сериалы Showtime';
+          call(json);
+        }, call);
+        return;
+      }
+      call();
+    }, function (call) { // Блок со студиями №10
+      if (params.genres === 16 && params.url === 'movie') {
+        call();
+        return;
+      }
+      if (params.url === 'movie') {
+        call();
+        return;
+      }
+      if (params.url === 'tv') {
+        get$9('discover/' + params.url + '?with_networks=2&sort_by=popularity.desc&vote_count.gte=150', params, function (json) {
+          json.title = 'Сериалы ABC Network';
+          call(json);
+        }, call);
+        return;
+      }
+      call();
     }];
     function loadPart(partLoaded, partEmpty) {
       Api.partNext(parts_data, parts_limit, partLoaded, partEmpty);

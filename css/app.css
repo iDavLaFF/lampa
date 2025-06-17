@@ -2324,7 +2324,7 @@ body.settings--open .settings__layer {
 }
 @media screen and (max-width: 400px) {
   .scroll--mask .scroll__content {
-    padding: 1em 0.5em;
+    padding: 2em 0.5em;
   }
 }
 .scroll--horizontal .scroll__content {
@@ -2403,7 +2403,7 @@ body.true--mobile .items-line + .items-line {
   margin-top: 1em;
 }
 .items-line--type-cards {
-  min-height: 24em;
+  min-height: 20em;
 }
 .items-line--type-collection {
   min-height: 15em;
@@ -3658,7 +3658,7 @@ body.card--no-cover .full-start__background {
   padding-bottom: 4em;
 }
 body.true--mobile .full-start-new {
-  padding-bottom: 20em;
+  padding-bottom: 21em;
 }
 .full-start-new__body {
   display: -webkit-box;
@@ -3726,7 +3726,6 @@ body.true--mobile .full-start-new {
   .full-start-new__right {
     margin-left: -1.5em;
     margin-right: -1.5em;
-    height: 90%;
     padding: 1.5em;
     margin-top: -14em;
     margin-top: -20vh;
@@ -6574,7 +6573,7 @@ body.selectbox--open .selectbox__layer {
   -webkit-border-radius: 1em;
      -moz-border-radius: 1em;
           border-radius: 1em;
-  padding-bottom: 150%;
+  padding-bottom: 118%;
   position: relative;
 }
 .card-more__title {
