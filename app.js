@@ -7535,12 +7535,12 @@
   }
 
   function api$3(url) {
-    var base = Utils$2.protocol() + 'api.themoviedb.org/3/' + url;
+    var base = Utils$2.protocol() + 'apitmdb.idavlampa.ru' + '/3/' + url;
     return Storage.field('proxy_tmdb') && Storage.field('tmdb_proxy_api') ? proxy('tmdb_proxy_api') + '/' + base : base;
   }
 
   function image(url) {
-    var base = Utils$2.protocol() + 'image.tmdb.org/' + url;
+    var base = Utils$2.protocol() + 'imagetmdb.idavlampa.ru' + '/' + url;
     return Storage.field('proxy_tmdb') && Storage.field('tmdb_proxy_image') ? proxy('tmdb_proxy_image') + '/' + base : base;
   }
 
