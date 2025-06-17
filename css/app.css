@@ -3268,15 +3268,22 @@ body.true--mobile .card__title {
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
   opacity: 0;
-  -webkit-transition: opacity 0.5s ease-in-out;
-  -o-transition: opacity 0.5s ease-in-out;
-  -moz-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
   height: 108%;
   top: -6em;
 }
 .full-start__background.loaded {
+  -webkit-animation: animation-full-background 0.3s;
+     -moz-animation: animation-full-background 0.3s;
+       -o-animation: animation-full-background 0.3s;
+          animation: animation-full-background 0.3s;
   opacity: 0.5;
+}
+body.no--animation .full-start__background.loaded {
+  -webkit-animation: none;
+     -moz-animation: none;
+       -o-animation: none;
+          animation: none;
+  transition: opacity 0.5s ease-in-out;
 }
 .full-start__background.dim {
   opacity: 0.2;
@@ -13717,6 +13724,12 @@ body.advanced--animation:not(.no--animation) .explorer-card__head-img.animate-tr
        -o-animation: animation-trigger-enter 0.2s forwards;
           animation: animation-trigger-enter 0.2s forwards;
 }
+body.advanced--animation:not(.no--animation) .full-start__background.loaded {
+  -webkit-animation: animation-full-background 0.3s;
+     -moz-animation: animation-full-background 0.3s;
+       -o-animation: animation-full-background 0.3s;
+          animation: animation-full-background 0.3s;
+}
 body.advanced--animation:not(.no--animation) .torrent-item.focus, body.advanced--animation:not(.no--animation) .torrent-item.hover {
   -webkit-animation: animation-file-focus 0.2s;
      -moz-animation: animation-file-focus 0.2s;
@@ -13791,12 +13804,6 @@ body.advanced--animation:not(.no--animation) .modal.animate .modal__content {
      -moz-animation: animation-modal 0.3s;
        -o-animation: animation-modal 0.3s;
           animation: animation-modal 0.3s;
-}
-body.advanced--animation:not(.no--animation) .full-start__background.loaded {
-  -webkit-animation: animation-full-background 0.3s;
-     -moz-animation: animation-full-background 0.3s;
-       -o-animation: animation-full-background 0.3s;
-          animation: animation-full-background 0.3s;
 }
 body.advanced--animation:not(.no--animation) .activity:not(.activity--load) .activity__body {
   -webkit-animation: animation-activity 0.2s;
