@@ -2,7 +2,7 @@
 const plugins = [
 //  'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
 //  'https://cub.rip/plugin/tmdb-proxy', // @CUB thanks. TMDB Proxy v1.0.3
-  './plugins/tmdb.js', // @IDAVLAFF TMDB Proxy v1.0.4
+//  './plugins/tmdb.js', // @IDAVLAFF TMDB Proxy v1.0.4
   './plugins/interface.js', // @CUB thanks.
   './plugins/cardify.js', // @CUB thanks.
   './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add + fix & some edits.
@@ -55,8 +55,8 @@ function startSet() {
     jackett_interview: 'all',
     tmdb_lang: 'ru',
     poster_size: 'w500',
-    proxy_tmdb_auto: 'true',
-    proxy_tmdb: 'true',
+    proxy_tmdb_auto: 'false',
+    proxy_tmdb: 'false',
     source: 'tmdb',
     protocol: 'http',
     screensaver: 'false',
