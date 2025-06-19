@@ -1,7 +1,7 @@
 // Добавляем плагины
 const plugins = [
-//  'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
-  './plugins/tmdb.js', // @CUB thanks. TMDB Proxy v1.0.3
+  'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
+  'kurwa-bober.ninja/plugin/tmdb-proxy', // @CUB thanks. TMDB Proxy v1.0.3
   './plugins/interface.js', // @CUB thanks.
   './plugins/cardify.js', // @CUB thanks.
   './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add + fix & some edits.
