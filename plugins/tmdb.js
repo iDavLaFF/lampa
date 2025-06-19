@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var domain = 'cub.rip';
+    var domain = Lampa.Manifest && Lampa.Manifest.cub_domain ? Lampa.Manifest.cub_domain : 'cub.red';
     var tmdb_proxy = {
       name: 'TMDB Proxy',
       version: '1.0.3',
