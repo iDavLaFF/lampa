@@ -41,21 +41,15 @@
         };
         localStorage.setItem(key, JSON.stringify(logoData));
     }
-    function insertLogo(renderElement, logoPath, fromCache, fallbackTitle) {
+    function insertLogo(renderElement, logoPath, fromCache) {
         var logoBlock = renderElement.find(".full-start-new__logo-block");
-        logoBlock.empty();
+        var logoImg = $(`<img class="logo-img" style="display: block; max-height: 8em; max-width: 50vw; margin-top: 0em; margin-bottom: 0em; align-self: center;" src="${Lampa.TMDB.image("/t/p/w500" + logoPath)}">`);
         var mobileStyles = `@media (max-width: 768px) { .logo-img { max-height: 6em !important; max-width: 90vw !important; } } `;
         $('head').append('<style>' + mobileStyles + '</style>');
-        var element;
-        if (logoPath) {
-            element = $(`<img class="logo-img" style="display: block; max-height: 8em; max-width: 30vw; margin-top: 0em; margin-bottom: 0em; align-self: center;" src="${Lampa.TMDB.image("/t/p/w500" + logoPath)}">`);
-        } else {
-            element = $(`<div class="logo-text" style="display: block; max-height: 8em; max-width: 30vw; margin-top: 0em; margin-bottom: 0em; align-self: center; font-size: 3em; font-weight: 100; text-align: center;">${fallbackTitle}</div>`);
-        }
-        element.css({'opacity': '0', 'transform': 'translateY(20px) scale(0.9)', 'transition': 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)'});
-        logoBlock.append(element);
+        logoImg.css({'opacity': '0', 'transform': 'translateY(20px) scale(0.9)', 'transition': 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)'});
+        logoBlock.append(logoImg);
         requestAnimationFrame(() => {
-            element.css({'opacity': '1', 'transform': 'translateY(0) scale(1)'});
+            logoImg.css({'opacity': '1', 'transform': 'translateY(0) scale(1)'});
         });
     }
 })();
