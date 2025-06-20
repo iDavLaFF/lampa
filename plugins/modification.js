@@ -1,6 +1,6 @@
 // Добавляем плагины
 const plugins = [
-  'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
+//  'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
   'kurwa-bober.ninja/plugin/tmdb-proxy', // @CUB thanks. TMDB Proxy v1.0.3
   './plugins/interface.js', // @CUB thanks.
   './plugins/cardify.js', // @CUB thanks.
