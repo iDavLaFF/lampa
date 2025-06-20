@@ -7534,7 +7534,16 @@
     return Utils$2.checkHttp(proxy);
   }
 
-  function api$3(url) {
+function api$3(url) {
+  return Storage.field('proxy_tmdb') && Storage.field('tmdb_proxy_api') ? proxy('tmdb_proxy_api') + '/' + url : Utils$2.protocol() + 'api.themoviedb.org/3/' + url;
+}
+
+function image(url) {
+  return Storage.field('proxy_tmdb') && Storage.field('tmdb_proxy_image') ? proxy('tmdb_proxy_image') + '/' + url : Utils$2.protocol() + 'image.tmdb.org/' + url;
+}
+
+
+/*  function api$3(url) {
     var base = Utils$2.protocol() + 'api.themoviedb.org/3/' + url;
     return Storage.field('proxy_tmdb') && Storage.field('tmdb_proxy_api') ? proxy('tmdb_proxy_api') + '/' + base : base;
   }
@@ -7542,7 +7551,7 @@
   function image(url) {
     var base = Utils$2.protocol() + 'image.tmdb.org/' + url;
     return Storage.field('proxy_tmdb') && Storage.field('tmdb_proxy_image') ? proxy('tmdb_proxy_image') + '/' + base : base;
-  }
+  }*/
 
   function broken() {
     broken_images++;
