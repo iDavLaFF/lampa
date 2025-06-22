@@ -1,7 +1,7 @@
 // Добавляем плагины
 const plugins = [
 //  'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
-//  './plugins/tmdb-proxy', // @CUB thanks. TMDB Proxy v1.0.3
+  'https://cub.rip/plugin/tmdb-proxy', // @CUB thanks. TMDB Proxy v1.0.3
   './plugins/interface.js', // @CUB thanks.
   './plugins/cardify.js', // @CUB thanks.
   './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add + fix & some edits.
@@ -56,9 +56,7 @@ function startSet() {
     poster_size: 'w500',
     proxy_tmdb_auto: 'false',
     proxy_tmdb: 'true',
-    tmdb_proxy_api: 'lampa.byskaz.ru/tmdb/api/3/',
-    tmdb_proxy_image: 'lampa.byskaz.ru/tmdb/img',
-    source: 'tmdb',
+    source: 'cub',
     protocol: 'http',
     screensaver: 'false',
     screensaver_time: '10',
