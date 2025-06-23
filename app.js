@@ -23594,72 +23594,29 @@ function image(url) {
         }
       });
     }, function (call) {
-      get$5('?sort=latest', params, function (json) {
-        json.title = Lang.translate('title_latest');
-        call(json);
-      }, call);
-    }, function (call) {
       get$5('top/fire/movie', params, function (json) {
-        json.title = Lang.translate('title_fire');
-        json.line_type = 'top';
+        json.title = 'Выбор зрителей';
         call(json);
       }, call);
     }, function (call) {
       get$5('?cat=' + params.url + '&sort=latest&uhd=true', params, function (json) {
         json.title = Lang.translate('title_in_high_quality');
-        json.small = true;
-        json.wide = true;
-        json.results.forEach(function (card) {
-          card.promo = card.overview;
-          card.promo_title = card.title || card.name;
-        });
         call(json);
       }, call);
     }, function (call) {
       get$5('top/hundred/movie', params, function (json) {
-        json.title = Lang.translate('title_top_100') + ' - ' + Lang.translate('menu_movies');
-        json.line_type = 'top';
+        json.title = Lang.translate('title_top_movie');
         call(json);
       }, call);
     }, function (call) {
       get$5('top/hundred/tv', params, function (json) {
-        json.title = Lang.translate('title_top_100') + ' - ' + Lang.translate('menu_tv');
-        json.line_type = 'top';
+        json.title = Lang.translate('title_top_tv');
         call(json);
       }, call);
-    }, function (call) {
-      trailers('added', call);
     }];
-    var start_shuffle = parts_data.length + 1;
-    Arrays.insert(parts_data, 0, Api.partPersons(parts_data, parts_limit, 'movie', start_shuffle));
-    TMDB.genres.movie.forEach(function (genre) {
-      var event = function event(call) {
-        get$5('?sort=now&genre=' + genre.id, params, function (json) {
-          json.title = Lang.translate(genre.title.replace(/[^a-z_]/g, ''));
-          call(json);
-        }, call);
-      };
-
-      parts_data.push(event);
-    });
-    network$5.silent(Utils$2.protocol() + object$2.cub_domain + '/api/collections/list?category=new', function (data) {
-      data.results.forEach(function (collection, index) {
-        var event = function event(call_inner) {
-          get$5('collections/' + collection.id, {}, function (json) {
-            json.title = Utils$2.capitalizeFirstLetter(collection.title);
-            call_inner(json);
-          }, call_inner);
-        };
-
-        parts_data.push(event);
-      });
-      Arrays.shuffleArrayFromIndex(parts_data, start_shuffle);
-    });
-
     function loadPart(partLoaded, partEmpty) {
       Api.partNext(parts_data, parts_limit, partLoaded, partEmpty);
     }
-
     loadPart(oncomplite, onerror);
     return loadPart;
   }
@@ -23679,11 +23636,6 @@ function image(url) {
         results: books,
         title: params.url == 'tv' ? Lang.translate('title_continue') : Lang.translate('title_watched')
       };
-
-      if (params.url == 'tv') {
-        json.ad = 'notice', json.type = params.url;
-      }
-
       call(json);
     }, function (call) {
       if (params.url == 'tv' || params.url == 'anime') {
@@ -23699,19 +23651,8 @@ function image(url) {
         call();
       }
     }, function (call) {
-      call({
-        results: recomend,
-        title: Lang.translate('title_recomend_watch')
-      });
-    }, function (call) {
       get$5('?cat=' + params.url + '&sort=now_playing' + airdate, params, function (json) {
         json.title = Lang.translate('title_now_watch');
-
-        if (params.url == 'tv') {
-          json.ad = 'bot';
-          json.type = params.url;
-        }
-
         call(json);
       }, call);
     }, function (call) {
@@ -23766,8 +23707,7 @@ function image(url) {
     }, function (call) {
       if (params.url == 'anime') call();else {
         get$5('top/hundred/' + params.url, params, function (json) {
-          json.title = Lang.translate('title_top_100');
-          json.line_type = 'top';
+          json.title = Lang.translate('title_top_' + params.url);
           call(json);
         }, call);
       }
@@ -23790,49 +23730,15 @@ function image(url) {
         call(json);
       }, call);
     }];
-    var start_shuffle = parts_data.length + 1;
-    if (fullcat) Arrays.insert(parts_data, 0, Api.partPersons(parts_data, parts_limit + 3, params.url, start_shuffle));
-
-    if (TMDB.genres[params.url]) {
-      TMDB.genres[params.url].forEach(function (genre) {
-        var gen = params.genres ? [].concat(params.genres, genre.id) : [genre.id];
-        if (params.genres && params.genres == genre.id) return;
-
-        var event = function event(call) {
-          get$5('?cat=' + params.url + '&sort=top&genre=' + gen.join(','), params, function (json) {
-            json.title = Lang.translate(genre.title.replace(/[^a-z_]/g, ''));
-            call(json);
-          }, call);
-        };
-
-        parts_data.push(event);
-      });
-    } else if (params.url == 'anime') {
-      TMDB.genres.tv.filter(function (a) {
-        return !(a.id == 99 || a.id == 10766);
-      }).forEach(function (genre) {
-        var event = function event(call) {
-          get$5('?cat=' + params.url + '&sort=top&genre=' + genre.id, params, function (json) {
-            json.title = Lang.translate(genre.title.replace(/[^a-z_]/g, ''));
-            call(json);
-          }, call);
-        };
-
-        parts_data.push(event);
-        Arrays.shuffleArrayFromIndex(parts_data, start_shuffle);
-      });
-    }
-
     function loadPart(partLoaded, partEmpty) {
       Api.partNext(parts_data, parts_limit, partLoaded, partEmpty);
     }
-
     loadPart(oncomplite, onerror);
     return loadPart;
   }
 
   function full$1(params, oncomplite, onerror) {
-    var status = new status$2(8);
+    var status = new status$2(7);
     status.onComplite = oncomplite;
     if (Utils$2.dcma(params.method, params.id)) return onerror();
     get$5('3/' + params.method + '/' + params.id + '?api_key=' + TMDB$1.key() + '&append_to_response=content_ratings,release_dates,keywords,alternative_titles&language=' + Storage.field('tmdb_lang'), params, function (json) {
@@ -23863,9 +23769,6 @@ function image(url) {
     }, status.error.bind(status));
     TMDB.get(params.method + '/' + params.id + '/recommendations', params, function (json) {
       status.append('recomend', json);
-    }, status.error.bind(status));
-    TMDB.get(params.method + '/' + params.id + '/similar', params, function (json) {
-      status.append('simular', json);
     }, status.error.bind(status));
     TMDB.videos(params, function (json) {
       status.append('videos', json);
@@ -42044,7 +41947,7 @@ function image(url) {
     lang_use: false,
     read_only: false,
     dcma: false,
-    push_state: false,
+    push_state: true,
     iptv: false,
     feed: false
   });
