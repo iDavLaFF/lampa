@@ -23656,68 +23656,36 @@ function image(url) {
         call(json);
       }, call);
     }, function (call) {
-      if (params.url == 'anime') {
-        get$5('?cat=' + params.url + '&sort=top', params, function (json) {
-          json.title = Lang.translate('title_in_top');
-          json.small = true;
-          json.wide = true;
-          json.results.forEach(function (card) {
-            card.promo = card.overview;
-            card.promo_title = card.title || card.name;
-          });
-          call(json);
-        }, call);
-      } else {
+      if (params.url == 'anime') call();else {
         get$5('?cat=' + params.url + '&sort=latest&uhd=true' + airdate, params, function (json) {
           json.title = Lang.translate('title_in_high_quality');
-          json.small = true;
-          json.wide = true;
-          json.results.forEach(function (card) {
-            card.promo = card.overview;
-            card.promo_title = card.title || card.name;
-          });
           call(json);
         }, call);
       }
-    }, function (call) {
-      if (params.url == 'tv' || params.url == 'anime') {
-        get$5('?cat=' + params.url + '&sort=airing' + airdate, params, function (json) {
-          json.title = Lang.translate('title_ongoing');
-          call(json);
-        }, call);
-      } else call();
     }, function (call) {
       get$5('?cat=' + params.url + '&sort=top' + airdate, params, function (json) {
         json.title = Lang.translate('title_popular');
         call(json);
       }, call);
     }, function (call) {
-      get$5('?cat=' + params.url + '&sort=now&airdate=' + new Date().getFullYear(), params, function (json) {
-        json.title = Lang.translate('title_new_this_year');
-        call(json);
-      }, call);
-    }, function (call) {
       if (params.url == 'anime') call();else {
         get$5('top/fire/' + params.url, params, function (json) {
-          json.title = Lang.translate('title_fire');
-          json.line_type = 'top';
+          json.title = 'Выбор зрителей';
           call(json);
         }, call);
       }
     }, function (call) {
-      if (params.url == 'anime') call();else {
+      if (params.url == 'anime') {
+        get$5('?cat=' + params.url + '&sort=top', params, function (json) {
+          json.title = 'Топ аниме';
+          call(json);
+        }, call);
+      } else {
         get$5('top/hundred/' + params.url, params, function (json) {
           json.title = Lang.translate('title_top_' + params.url);
           call(json);
         }, call);
       }
-    }, function (call) {
-      if (params.url == 'movie' && fullcat) trailers('added', call);else call();
-    }, function (call) {
-      get$5('?cat=' + params.url + '&sort=top&airdate=' + (new Date().getFullYear() - 1), params, function (json) {
-        json.title = Lang.translate('title_last_year');
-        call(json);
-      }, call);
     }, function (call) {
       get$5('?cat=' + params.url + '&sort=top&airdate=' + (new Date().getFullYear() - 7) + '-' + (new Date().getFullYear() - 2) + '&vote=6-8', params, function (json) {
         json.title = Lang.translate('title_worth_rewatch');
@@ -23726,7 +23694,6 @@ function image(url) {
     }, function (call) {
       get$5('?cat=' + params.url + '&sort=top&airdate=' + (new Date().getFullYear() - 7) + '-' + (new Date().getFullYear() - 2) + '&vote=8-10', params, function (json) {
         json.title = Lang.translate('title_hight_voite');
-        json.line_type = 'top';
         call(json);
       }, call);
     }];
