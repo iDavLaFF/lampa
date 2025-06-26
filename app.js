@@ -11145,10 +11145,25 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок 'Топ'
-      get$9(params.url == 'movie' ? 'movie/top_rated' : 'tv/top_rated', params, function (json) {
-        json.title = Lang.translate('title_top_' + params.url);
-        call(json);
-      }, call);
+      if (params.genres === 16 && params.url === 'movie') {
+        call();
+        return;
+      }
+      if (params.url == 'movie') {
+        get$9('movie/top_rated', params, function (json) {
+          json.title = Lang.translate('title_top_' + params.url);
+          call(json);
+        }, call);
+        return;
+      }
+      if (params.url == 'tv') {
+        get$9('tv/top_rated', params, function (json) {
+          json.title = Lang.translate('title_top_' + params.url);
+          call(json);
+        }, call);
+        return;
+      }
+      call();
     }, function (call) { // Блок со студиями №1
       if (params.genres === 16 && params.url === 'movie') {
         get$9('discover/movie?with_companies=2|3|9383&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
