@@ -8985,18 +8985,31 @@ function image(url) {
         title: Lang.translate('menu_multmovie'),
         component: 'category',
         genres: 16,
-        id: 16,
         source: Storage.field('source'),
         page: 1
       });
     });
     html$g.find('.open--anime').on('hover:enter', function () {
-      Activity$1.push({
-        url: 'anime',
-        title: Lang.translate('menu_anime'),
-        component: 'category',
-        source: 'cub',
-      });
+      const source = Storage.field('source');
+      if (source === 'tmdb') {
+        Activity$1.push({
+          url: 'tv',
+          title: Lang.translate('menu_anime'),
+          component: 'category',
+          genres: 16,
+          with_original_language: 'ja',
+          with_keywords: '210024',
+          source: 'tmdb',
+          page: 1
+        });
+      } else if (source === 'cub') {
+        Activity$1.push({
+          url: 'anime',
+          title: Lang.translate('menu_anime'),
+          component: 'category',
+          source: 'cub'
+        });
+      }
     });
     html$g.find('.open--favorite').on('hover:enter', function () {
       Activity$1.push({
@@ -11083,6 +11096,13 @@ function image(url) {
       };
       call(json);
     }, function (call) { // Блок 'Популярное'
+      if (params.genres === 16 && params.url === 'tv') {
+        get$9('discover/tv?sort_by=popularity.desc&with_original_language=ja&with_keywords=210024|210027|222361|106722|117723&without_keywords=185616|209355|186423&without_companies=3472|13252|2173|2301&vote_count.gte=100', params, function (json) {
+          json.title = Lang.translate('title_popular');
+          call(json);
+        }, call);
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         get$9('discover/movie?sort_by=popularity.desc&without_keywords=210024|210027|222361&vote_count.gte=100', params, function (movies) {
         get$9('discover/tv?sort_by=popularity.desc&without_keywords=210024|210027|222361&vote_count.gte=100', params, function (series) {
@@ -11114,6 +11134,13 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок 'Выбор зрителей'
+      if (params.genres === 16 && params.url === 'tv') {
+        get$9('discover/tv?sort_by=vote_count.desc&with_original_language=ja&with_keywords=210024|210027|222361|106722|117723&without_keywords=185616|209355|186423&without_companies=3472|13252|2173|2301&vote_count.gte=100', params, function (json) {
+          json.title = 'Выбор зрителей';
+          call(json);
+        }, call);
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         get$9('discover/movie?sort_by=vote_count.desc&without_keywords=210024|210027|222361&vote_count.gte=100', params, function (movies) {
         get$9('discover/tv?sort_by=vote_count.desc&without_keywords=210024|210027|222361&vote_count.gte=100', params, function (series) {
@@ -11145,6 +11172,10 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок 'Топ'
+      if (params.genres === 16 && params.url === 'tv') {
+        call();
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         call();
         return;
@@ -11165,6 +11196,13 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок со студиями №1
+      if (params.genres === 16 && params.url === 'tv') {
+        get$9('discover/tv?with_watch_providers=1112&with_original_language=ja&sort_by=popularity.desc&vote_count.gte=50', params, function (json) {
+          json.title = 'Аниме-сериалы Crunchyroll';
+          call(json);
+        }, call);
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         get$9('discover/movie?with_companies=2|3|9383&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
         get$9('discover/tv?with_networks=54|128&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
@@ -11196,6 +11234,13 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок со студиями №2
+      if (params.genres === 16 && params.url === 'tv') {
+        get$9('discover/movie?with_watch_providers=1112&with_original_language=ja&sort_by=popularity.desc&vote_count.gte=50', params, function (json) {
+          json.title = 'Аниме-фильмы Crunchyroll';
+          call(json);
+        }, call);
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         get$9('discover/movie?with_companies=521|6704&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
         get$9('discover/tv?with_networks=3353&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
@@ -11227,6 +11272,13 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок со студиями №3
+      if (params.genres === 16 && params.url === 'tv') {
+        get$9('discover/tv?with_networks=213&with_original_language=ja&sort_by=popularity.desc&vote_count.gte=30', params, function (json) {
+          json.title = 'Аниме-сериалы Netflix';
+          call(json);
+        }, call);
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         get$9('discover/movie?with_companies=2251&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
         get$9('discover/tv?with_companies=2251&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
@@ -11258,6 +11310,21 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок со студиями №4
+      if (params.genres === 16 && params.url === 'tv') {
+        get$9('discover/movie?with_original_language=zh&with_genres=16&vote_count.gte=30&sort_by=vote_average.desc', params, function (movies) {
+        get$9('discover/tv?with_original_language=zh&with_genres=16&vote_count.gte=30&sort_by=vote_average.desc', params, function (series) {
+          const combined = [...movies.results, ...series.results];
+          const json = {
+            ...movies,
+            results: combined,
+            title: 'Китайская анимация (Донхуа)'
+          };
+          call(json);
+        }, call);
+        return;
+        }, call);
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         get$9('discover/movie?with_companies=174&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
         get$9('discover/tv?with_networks=56|80&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
@@ -11289,6 +11356,10 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок со студиями №5
+      if (params.genres === 16 && params.url === 'tv') {
+        call();
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         get$9('discover/movie?with_companies=8&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
         get$9('discover/tv?with_networks=213&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
@@ -11320,6 +11391,10 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок со студиями №6
+      if (params.genres === 16 && params.url === 'tv') {
+        call();
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         get$9('discover/movie?with_companies=2605&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
         get$9('discover/tv?with_networks=13&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
@@ -11351,6 +11426,10 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок со студиями №7
+      if (params.genres === 16 && params.url === 'tv') {
+        call();
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         get$9('discover/movie?with_companies=762|21&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (movies) {
         get$9('discover/tv?with_networks=1024&with_genres=16&vote_count.gte=100&sort_by=popularity.desc', params, function (series) {
@@ -11382,6 +11461,10 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок со студиями №8
+      if (params.genres === 16 && params.url === 'tv') {
+        call();
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         call();
         return;
@@ -11402,6 +11485,10 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок со студиями №9
+      if (params.genres === 16 && params.url === 'tv') {
+        call();
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         call();
         return;
@@ -11422,6 +11509,10 @@ function image(url) {
       }
       call();
     }, function (call) { // Блок со студиями №10
+      if (params.genres === 16 && params.url === 'tv') {
+        call();
+        return;
+      }
       if (params.genres === 16 && params.url === 'movie') {
         call();
         return;
