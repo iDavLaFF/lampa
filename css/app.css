@@ -1227,7 +1227,7 @@ body.light--version .wrap__left {
   display: flex;
   gap: 1em;
 }
-.head__action-rights {
+.head__actions-right {
   position: fixed;
   right: 2em;
   display: flex;
