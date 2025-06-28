@@ -43,7 +43,7 @@ function startSet() {
     interface_size: 'small',
     background: 'false',
     black_style: 'false',
-    glass_style: 'true',
+    glass_style: 'false',
     advanced_animation: 'false',
     card_views_type: 'view',
     player_timecode: 'continue',
