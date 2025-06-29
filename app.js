@@ -13061,7 +13061,7 @@ function image(url) {
     var items = [];
     var active = 0;
     var tv = Platform.screen('tv');
-    var view = (tv ? Lampa.Storage.field('interface_size') == 'small' ? 9 : 6 : 12) + (params.align_left ? 4 : 0);
+    var view = (tv ? Lampa.Storage.field('interface_size') == 'small' ? 9 : 9 : 12) + (params.align_left ? 4 : 0);
     var more;
     var last;
 

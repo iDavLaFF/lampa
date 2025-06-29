@@ -6665,7 +6665,7 @@ body.selectbox--open .selectbox__layer {
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
           flex-shrink: 0;
-  width: 12.75em;
+  width: 10em;
   margin-bottom: 0;
 }
 .card-more__box {
@@ -6679,7 +6679,7 @@ body.selectbox--open .selectbox__layer {
   -webkit-border-radius: 1em;
      -moz-border-radius: 1em;
           border-radius: 1em;
-  padding-bottom: 118%;
+  padding-bottom: 150%;
   position: relative;
 }
 .card-more__title {
