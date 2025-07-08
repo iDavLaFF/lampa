@@ -3123,6 +3123,9 @@ body.true--mobile .card__promo {
       -ms-flex-align: end;
           align-items: flex-end;
 }
+.card__age {
+  display: none;
+}
 .card.focus .card__view::after, .card.hover .card__view::after {
   content: "";
   position: absolute;
