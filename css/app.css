@@ -2563,7 +2563,7 @@ body.settings--open .settings__layer {
 }
 @media screen and (max-width: 400px) {
   .scroll--mask .scroll__content {
-    padding: 1em 0.5em;
+    padding: 1.5em 0em;
   }
 }
 .scroll--horizontal .scroll__content {
