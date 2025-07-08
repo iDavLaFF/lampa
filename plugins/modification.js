@@ -1,6 +1,6 @@
 // Добавляем плагины
 const plugins = [
-  'https://cub.red/plugin/tmdb-proxy', // @CUB thanks. TMDB Proxy v1.0.3
+  './plugins/tmdb-proxy.js', // @CUB thanks. TMDB Proxy v1.0.3
 //  './plugins/interface.js', // @CUB thanks.
   './plugins/cardify.js', // @CUB thanks.
   './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add + fix & some edits.
@@ -37,8 +37,8 @@ if (!checkLampa()) {
 function startSet() {
   const settings = {
     set: 'true',
-    language: 'ru',/*
-    cub_domain: 'mirror-kurwa.men',*/
+    language: 'ru',
+//    cub_domain: 'mirror-kurwa.men',
     interface_size: 'small',
     background: 'false',
     black_style: 'false',
@@ -53,10 +53,10 @@ function startSet() {
     jackett_interview: 'all',
     tmdb_lang: 'ru',
     poster_size: 'w500',
-    proxy_tmdb_auto: 'true',
-    proxy_tmdb: 'true',
+//    proxy_tmdb_auto: 'true',
+//    proxy_tmdb: 'true',
     source: 'tmdb',
-    protocol: 'http',
+//    protocol: 'http',
     screensaver: 'false',
     screensaver_time: '10',
     screensaver_types: 'chrome',
