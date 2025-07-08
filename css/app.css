@@ -4098,6 +4098,7 @@ body.true--mobile.orientation--landscape .full-start-new {
 @media screen and (max-width: 580px) {
   .full-start-new__rate-line {
     font-size: 0.8em;
+    justify-content: center;
   }
 }
 @media screen and (max-width: 480px) {
