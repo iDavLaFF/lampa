@@ -3954,8 +3954,9 @@ body.true--mobile.orientation--landscape .full-start-new {
     margin-right: -1.5em;
     padding: 1.5em;
 //    margin-top: -14em;
-    margin-top: -10vh;
+    margin-top: -20vh;
     z-index: 1;
+    position: relative;
     -webkit-border-top-left-radius: 2em;
             border-top-left-radius: 2em;
     -webkit-border-top-right-radius: 2em;
