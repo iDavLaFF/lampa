@@ -3012,7 +3012,7 @@ body.true--mobile .card__promo {
   font-size: 0.8em;
   -webkit-border-radius: 0.3em;
      -moz-border-radius: 0.3em;
-          border-radius: 0.3em;
+          border-radius: 1em 0.3em;
 }
 .card__new-episode {
   position: absolute;
@@ -3040,7 +3040,7 @@ body.true--mobile .card__promo {
   font-size: 0.8em;
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
-  border-radius: 0.3em;
+  border-radius: 0.3em 1em;
   text-transform: uppercase;
 }
 .card__vote {
@@ -3048,8 +3048,9 @@ body.true--mobile .card__promo {
   bottom: 0;
   left: 0;
   height: 2.8em;
+  width: 2.7em;
   border: 1px solid #01b4e4;
-  border-radius: 0.3em;
+  border-radius: 0.3em 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
