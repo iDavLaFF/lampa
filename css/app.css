@@ -2822,6 +2822,12 @@ body.true--mobile .items-line + .items-line {
   width: 10em;
   position: relative;
   will-change: transform;
+  -webkit-transition: -webkit-transform .2s;
+  transition: -webkit-transform .2s;
+  -o-transition: -o-transform .2s;
+  -moz-transition: transform .2s, -moz-transform .2s;
+  transition: transform .2s;
+  transition:transform .2s, -webkit-transform .2s, -moz-transform .2s, -o-transform .2s
 }
 .card + .card {
   margin-left: 1em;
@@ -3127,22 +3133,32 @@ body.true--mobile .card__promo {
 .card__age {
   display: none;
 }
-.card.focus .card__view::after, .card.hover .card__view::after {
-  content: "";
-  position: absolute;
-  top: -0.5em;
-  left: -0.5em;
-  right: -0.5em;
-  bottom: -0.5em;
-  border: 0.1em solid #fff;
-  -webkit-border-radius: 1.4em;
-     -moz-border-radius: 1.4em;
-          border-radius: 1.4em;
-  z-index: -1;
-  pointer-events: none;
+.card .card__view::after {
+    border: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius:0 !important
 }
-.card.hover .card__view::after {
-  border-color: rgba(255, 255, 255, 0.5);
+.card.focus, .card.hover {
+  z-index: 1;
+  -webkit-transform: scale(1.05);
+     -moz-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+       -o-transform: scale(1.05);
+          transform: scale(1.05);
+}
+.card.focus .card__view::after, .card.hover .card__view::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -2em;
+    right: -2em;
+    bottom: -3em;
+    z-index: -1;
+    pointer-events: none;
+    background: url(../img/shadow.png) no-repeat center center;
+    -webkit-background-size: 100% 100%;
+         -o-background-size: 100% 100%;
+            background-size: 100% 100%;
 }
 .card--prefab {
   min-height: 19em;
