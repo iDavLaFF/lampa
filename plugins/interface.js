@@ -1,3 +1,7 @@
+/**
+ * plugins/interface.js — альтернативный интерфейс главного экрана (premium/desktop).
+ * Замена Lampa.InteractionMain для источников tmdb/cub на десктопе и при premium-аккаунте.
+ */
 (function () {
     'use strict';
 

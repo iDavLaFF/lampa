@@ -1,3 +1,8 @@
+/**
+ * plugins/tmdb-proxy.js — TMDB Proxy.
+ * Назначение: проксирование TMDB API и изображений, скрытие UI-настроек прокси.
+ * Поведение: подставляет apitmdb/imagetmdb домены при включённом proxy_tmdb, добавляет email в query.
+ */
 (function () {
     'use strict';
 

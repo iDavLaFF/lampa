@@ -1,3 +1,9 @@
+/**
+ * plugins/online.js — плагин BwaRC (онлайн источники).
+ * Назначение: поиск и воспроизведение онлайн-видео с выбором балансеров/голосов.
+ * Заметка: добавлена безопасная подстановка имени балансера в сообщении об ошибке
+ * (используется sources[balanser]?.name || balanser), чтобы избежать ошибки доступа.
+ */
 (function() {
   'use strict';
 
@@ -1342,7 +1348,7 @@ else if (element.url) {
       var html = Lampa.Template.get('lampac_does_not_answer', {});
       html.find('.online-empty__buttons').remove();
       html.find('.online-empty__title').text(Lampa.Lang.translate('title_error'));
-      html.find('.online-empty__time').text(er && er.accsdb ? er.msg : Lampa.Lang.translate('lampac_does_not_answer_text').replace('{balanser}', balanser[balanser].name));
+      html.find('.online-empty__time').text(er && er.accsdb ? er.msg : Lampa.Lang.translate('lampac_does_not_answer_text').replace('{balanser}', (sources[balanser] ? sources[balanser].name : balanser)));
       scroll.clear();
       scroll.append(html);
       this.loading(false);
@@ -1624,7 +1630,7 @@ else if (element.url) {
         ru: 'Удерживайте клавишу "ОК" для вызова контекстного меню',
         uk: 'Утримуйте клавішу "ОК" для виклику контекстного меню',
         en: 'Hold the "OK" key to bring up the context menu',
-        zh: '按住“确定”键调出上下文菜单'
+        zh: '按住"确定"键调出上下文菜单'
       },
       title_online: { //
         ru: 'Онлайн',

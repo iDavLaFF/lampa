@@ -1,3 +1,7 @@
+/**
+ * plugins/cardify.js — расширенный шаблон экрана "Полная карточка" для ТВ.
+ * Назначение: добавляет новый layout (full_start_new) с блоком логотипа и линией рейтингов.
+ */
 (function () {
   'use strict';
     function startPlugin() {
