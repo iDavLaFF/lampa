@@ -5,8 +5,8 @@ const plugins = [
   './plugins/cardify.js', // @CUB thanks.
   './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add + fix & some edits.
   window.location.protocol === 'https:' ? './plugins/online.js' : 'http://smotret24.ru/online.js', // @SHOWY thanks. Online plugin
-//  window.location.protocol === 'https:' ? 'https://ab2024.ru/sisi.js' : 'http://ab2024.ru/sisi.js', // @AKTER.BLACK thanks. 18+ plugins
-  window.location.protocol === 'https:' ? 'https://adultjs.onrender.com' : 'http://adultjs.onrender.com', // @IMMISTERIO thanks. 18+ plugins
+  window.location.protocol === 'https:' ? 'https://ab2024.ru/sisi.js' : 'http://ab2024.ru/sisi.js', // @AKTER.BLACK thanks. 18+ plugins
+//  window.location.protocol === 'https:' ? 'https://adultjs.onrender.com' : 'http://adultjs.onrender.com', // @IMMISTERIO thanks. 18+ plugins
 //  window.location.protocol === 'https:' ? 'https://rc.bwa.to/sisi.js' : 'http://rc.bwa.to/sisi.js', // @IMMISTERIO thanks. 18+ plugins
   'https://skaz.tv/export.js' // @ELENATV1 thanks. Bookmarks & History backup plugin
 ];
@@ -78,7 +78,7 @@ function startSet() {
 
 // Удаляем элементы из меню настроек
 Lampa.Settings.listener.follow('open', (e) => {
-  const components = ['account', 'tmdb', 'parental_control', 'sisi', 'AdultJS'];
+  const components = ['account', 'tmdb', 'parental_control', 'sisi', /*'AdultJS'*/];
   const params = ['light_version', 'background', 'background_type', 'black_style', 'card_interfice_type', 
     'card_interfice_poster', 'card_interfice_cover', 'glass_style', 'glass_opacity', 
     'card_interfice_reactions', 'interface_sound_play', 'interface_sound_level', 'advanced_animation', 'scroll_type', 
@@ -176,3 +176,4 @@ $document.on('keydown', (e) => {
   }
 
 });
+
