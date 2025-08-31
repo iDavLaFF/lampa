@@ -78,7 +78,7 @@ function startSet() {
 
 // Удаляем элементы из меню настроек
 Lampa.Settings.listener.follow('open', (e) => {
-  const components = ['account', 'tmdb', 'parental_control', 'sisi'];
+  const components = ['account', 'tmdb', 'parental_control', 'sisi', 'AdultJS'];
   const params = ['light_version', 'background', 'background_type', 'black_style', 'card_interfice_type', 
     'card_interfice_poster', 'card_interfice_cover', 'glass_style', 'glass_opacity', 
     'card_interfice_reactions', 'interface_sound_play', 'interface_sound_level', 'advanced_animation', 'scroll_type', 
@@ -176,6 +176,7 @@ $document.on('keydown', (e) => {
   }
 
 });
+
 
 
 
