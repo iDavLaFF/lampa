@@ -1,6 +1,6 @@
 // Добавляем плагины
 const plugins = [
-//  './plugins/interface.js', // @CUB thanks. Beauty interface style + fix & some edits.
+  './plugins/interface.js', // @CUB thanks. Beauty interface style + fix & some edits.
   './plugins/cardify.js', // @CUB thanks. Beauty card interface style + fix & some edits.
   './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add + fix & some edits.
   'https://lam.maxvol.pro/online.js', // @MAXVOL thanks. Online plugins

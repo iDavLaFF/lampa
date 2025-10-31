@@ -12,7 +12,6 @@
       };
 
       this.update = function (data) {
-        if (!html) return;
         html.find('.new-interface-info__head,.new-interface-info__details').text('---');
         html.find('.new-interface-info__title').text(data.title);
         html.find('.new-interface-info__description').text(data.overview || Lampa.Lang.translate('full_notext'));
@@ -21,7 +20,6 @@
       };
 
       this.draw = function (data) {
-        if (!html) return;
         var create = ((data.release_date || data.first_air_date || '0000') + '').slice(0, 4);
         var head = [];
         var details = [];
@@ -303,7 +301,6 @@
         var use = new_interface;
         if (!(object.source == 'tmdb' || object.source == 'cub')) use = old_interface;
         if (window.innerWidth < 767) use = old_interface;
-        if (!Lampa.Account.hasPremium()) use = old_interface;
         if (Lampa.Manifest.app_digital < 153) use = old_interface;
         return new use(object);
       };
