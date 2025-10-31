@@ -1,15 +1,66 @@
 // Добавляем плагины
 const plugins = [
-  './plugins/interface.js', // @CUB thanks. Beauty interface style + fix & some edits.
   './plugins/cardify.js', // @CUB thanks. Beauty card interface style + fix & some edits.
   './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add + fix & some edits.
   'https://lam.maxvol.pro/online.js', // @MAXVOL thanks. Online plugins
   'https://lam.maxvol.pro/sisi.js', // @MAXVOL thanks. 18+ plugin
-  'https://cub.rip/plugin/sport', // @CUB thanks. Sport live translations plugin
-  'https://skaz.tv/export.js' // @ELENATV1 thanks. Bookmarks & History backup plugin
+  'https://cub.rip/plugin/sport' // @CUB thanks. Sport live translations plugin
 ];
 
+// Проверяем сохранённое значение стиля интерфейса
+const style = Lampa.Storage.get('poster_style', 'new');
+if (style === 'new') {
+  plugins.unshift('./plugins/interface.js'); // подключаем в начало
+}
+
 Lampa.Utils.putScriptAsync(plugins);
+
+// Добавляем в "Настройки" пункт выборв "Стиль главного экрана"
+Lampa.SettingsApi.addParam({
+  component: 'interface',
+  param: {
+    name: "poster_style",
+    type: 'select',
+    values: {
+      new: 'Новый стиль',
+      classic: 'Классический стиль'
+    },
+    default: 'new'
+  },
+  field: {
+    name: 'Стиль главного экрана',
+    description: 'Выберите стиль интерфейса'
+  },
+  onChange: function(value) {
+    const pluginUrl = './plugins/interface.js';
+    const pluginName = 'Новый интерфейс';
+    const plugins = Lampa.Storage.get('plugins', []);
+    const inStorage = plugins.some(p => p.url === pluginUrl || p.name === pluginName);
+    const inDOM = !!document.querySelector(`script[src*="interface.js"]`);
+    const isInstalled = inStorage || inDOM;
+
+    // сохраняем выбор
+    Lampa.Storage.set('poster_style', value);
+
+    if (value === 'new') {
+      if (!isInstalled) {
+        Lampa.Noty.show('Установлен новый интерфейс, перезагрузка...');
+        setTimeout(() => window.location.reload(), 1000);
+      } else {
+        Lampa.Noty.show('Новый интерфейс уже активен');
+      }
+    }
+
+    if (value === 'classic') {
+      if (isInstalled) {
+        Lampa.Noty.show('Возврат к классическому интерфейсу, перезагрузка...');
+        setTimeout(() => window.location.reload(), 1000);
+      } else {
+        Lampa.Noty.show('Классический интерфейс уже используется');
+      }
+    }
+  }
+});
 
 // Кэшируем часто (используемые элементы
 const $document = $(document);
