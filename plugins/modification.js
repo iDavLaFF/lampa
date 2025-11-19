@@ -3,8 +3,7 @@ const plugins = [
   './plugins/cardify.js', // @CUB thanks. Beauty card interface style + fix & some edits.
   './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add + fix & some edits.
   'https://lam.maxvol.pro/online.js', // @MAXVOL thanks. Online plugins
-  'https://lam.maxvol.pro/sisi.js', // @MAXVOL thanks. 18+ plugin
-  'https://cub.rip/plugin/sport' // @CUB thanks. Sport live translations plugin
+  'https://lam.maxvol.pro/sisi.js' // @MAXVOL thanks. 18+ plugin
 ];
 
 Lampa.Utils.putScriptAsync(plugins);
@@ -50,6 +49,7 @@ function startSet() {
     parser_torrent_type: 'jackett',
     jackett_url: 'jacred.xyz',
     jackett_interview: 'all',
+    torrserver_url: 'localhost:8090',
     tmdb_lang: 'ru',
     poster_size: 'w500',
 //    proxy_tmdb_auto: 'true',
@@ -62,11 +62,12 @@ function startSet() {
     helper: 'false',
     pages_save_total: '3',
     request_caching: 'true',
-    cache_images: 'false',
+    cache_images: 'true',
     keyboard_type: 'integrate',
     sisi_preview: 'false',
+    sisi_history: 'false',
     torrents_filter: JSON.stringify({
-      quality: ['4k', '1080p']
+      quality: ['4k', '1080p', '720p']
     })
   };
 
