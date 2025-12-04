@@ -3889,11 +3889,14 @@ body.true--mobile.orientation--landscape .full-start-new {
   }
 }
 .full-start-new__left {
-  -webkit-flex-shrink: 0;
-      -ms-flex-negative: 0;
-          flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
   width: 17em;
   margin-right: 3em;
+  transition: transform 0.25s ease-out, height 0.25s ease-out;
+  will-change: transform, height;
+  z-index: 2;
 }
 @media screen and (min-width: 767px) {
   body.no--poster .full-start-new__left {
@@ -3903,12 +3906,6 @@ body.true--mobile.orientation--landscape .full-start-new {
 @media screen and (max-width: 580px) {
   .full-start-new__left {
     width: 30%;
-  }
-}
-@media screen and (max-width: 480px) {
-  .full-start-new__left {
-    width: auto;
-    margin: -1.5em;
   }
 }
 .full-start-new__right {
@@ -3948,12 +3945,31 @@ body.true--mobile.orientation--landscape .full-start-new {
     position: relative;
   }
 }
+/* Контейнер, который будем растягивать */
 .full-start-new__poster {
   position: relative;
+  width: 100%;
   padding-bottom: 150%;
   background-color: #3E3E3E;
-  -webkit-border-radius: 1em;
-          border-radius: 1em;
+  border-radius: 1em;
+  overflow: hidden;
+  transform-origin: top center;
+  transition: transform 0.2s ease-out;
+}
+
+/* Высота для «схлопнутого» состояния (когда сильно проскроллили вниз) */
+.full-start-new__left.compact .full-start-new__poster {
+  transform: scale(0.8);
+}
+
+/* Мобильные правки можно оставить как у тебя, ниже только важное */
+@media screen and (max-width: 480px) {
+  .full-start-new__left {
+    position: relative;
+    top: auto;
+    width: auto;
+    margin: -1.5em;
+  }
 }
 .full-start-new__poster.loaded {
   background-color: transparent;
