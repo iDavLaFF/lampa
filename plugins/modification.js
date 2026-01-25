@@ -2,8 +2,8 @@
 const plugins = [
   './plugins/cardify.js', // @CUB thanks. Beauty card interface style + fix & some edits.
   './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add + fix & some edits.
-  'https://lam.maxvol.pro/online.js', // @MAXVOL thanks. Online plugin
-  'https://lam.maxvol.pro/sisi.js' // @MAXVOL thanks. 18+ plugin
+  'https://lam.maxvol.pro/online.js' // @MAXVOL thanks. Online plugin
+//  'https://lam.maxvol.pro/sisi.js' // @MAXVOL thanks. 18+ plugin
 ];
 
 Lampa.Utils.putScriptAsync(plugins);
