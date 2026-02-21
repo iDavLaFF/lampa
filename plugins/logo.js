@@ -47,7 +47,7 @@
     }
     function insertLogo(renderElement, logoPath, fromCache) {
         var logoBlock = renderElement.find(".full-start-new__logo-block");
-        var logoImg = $(`<img class="logo-img" style="display: block; max-height: 8em; max-width: 50vw; margin-top: 0em; margin-bottom: 0em; align-self: center;" src="${Lampa.TMDB.image("/t/p/w500" + logoPath)}">`);
+        var logoImg = $(`<img class="logo-img" style="display: block; max-height: 8em; max-width: 50vw; margin-top: 0em; margin-bottom: 0em; align-self: center;" src="${Lampa.TMDB.image("/t/p/original" + logoPath)}">`);
         var mobileStyles = `@media (max-width: 768px) { .logo-img { max-height: 6em !important; max-width: 90vw !important; } .logo-title { max-height: 6em !important; max-width: 90vw !important; } } `;
         $('head').append('<style>' + mobileStyles + '</style>');
         logoImg.css({'opacity': '0', 'transform': 'translateY(20px) scale(0.9)', 'transition': 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)'});
