@@ -28,27 +28,11 @@
     font-family: 'Barlow', 'Arial', sans-serif;
     font-size: 18px;
     overflow-x: hidden;
-    cursor: none;
+    /* cursor removed */
     user-select: none;
   }
 
-  /* Custom cursor for TV feel */
-  #cursor {
-    width: 20px; height: 20px;
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    will-change: transform;
-    transition: width 0.2s, height 0.2s, background 0.2s, margin 0.2s;
-  }
-  #cursor.big {
-    width: 40px; height: 40px;
-    background: var(--accent-glow);
-    margin: -10px 0 0 -10px;
-  }
+  /* Cursor removed for TV */
 
   /* ─── NAV ─── */
   nav {
@@ -113,7 +97,7 @@
     border: 1.5px solid rgba(255,255,255,0.18);
     display: flex; align-items: center; justify-content: center;
     color: rgba(255,255,255,0.75);
-    cursor: pointer;
+    /* cursor removed */
     transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
   .nav-icon:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -125,7 +109,7 @@
     border: 1.5px solid rgba(255,255,255,0.18);
     display: flex; align-items: center; justify-content: center;
     color: rgba(255,255,255,0.8);
-    cursor: pointer;
+    /* cursor removed */
     transition: background 0.2s, border-color 0.2s;
   }
   .avatar:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -144,7 +128,7 @@
     position: absolute;
     inset: 0;
     display: flex;
-    transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+    transition: transform 0.3s ease;
     will-change: transform;
     z-index: 1;
   }
@@ -161,13 +145,8 @@
     position: absolute; inset: 0;
     background-size: cover;
     background-position: center top;
-    transition: transform 8s ease;
-    transform: scale(1.05);
   }
-  /* Лёгкий Ken Burns эффект на активном слайде */
-  .hero-slide.active .hero-slide-bg {
-    transform: scale(1.0);
-  }
+  /* Ken Burns removed for TV performance */
 
   /* Градиентная маска поверх фото */
   .hero-slide::after {
@@ -272,7 +251,7 @@
     display: flex; align-items: center; gap: 12px;
     background: #fff; color: #0a0a0f;
     font-size: 16px; font-weight: 700; letter-spacing: 0.04em;
-    padding: 16px 36px; border-radius: 6px; border: none; cursor: pointer;
+    padding: 16px 36px; border-radius: 6px; border: none; /* cursor removed */
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
   }
   .btn-play:hover { background: #e8e0ff; transform: scale(1.04); box-shadow: 0 8px 40px rgba(123,47,255,0.4); }
@@ -288,8 +267,8 @@
     background: rgba(255,255,255,0.12); color: #fff;
     font-size: 16px; font-weight: 600; padding: 16px 28px;
     border-radius: 6px; border: 1px solid rgba(255,255,255,0.2);
-    cursor: pointer; transition: background 0.2s, border-color 0.2s;
-    backdrop-filter: blur(10px);
+    /* cursor removed */ transition: background 0.2s, border-color 0.2s;
+    /* blur removed */
   }
   .btn-info:hover { background: rgba(123,47,255,0.3); border-color: var(--accent); }
 
@@ -311,9 +290,9 @@
     border: 1.5px solid rgba(255,255,255,0.2);
     color: #fff;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
+    /* cursor removed */
     transition: background 0.2s, border-color 0.2s, transform 0.15s;
-    backdrop-filter: blur(10px);
+    /* blur removed */
     flex-shrink: 0;
   }
   .hero-arrow:hover { background: var(--accent); border-color: var(--accent); transform: scale(1.1); }
@@ -329,7 +308,7 @@
     width: 6px; height: 6px;
     border-radius: 50%;
     background: rgba(255,255,255,0.35);
-    cursor: pointer;
+    /* cursor removed */
     transition: width 0.3s, background 0.3s, border-radius 0.3s;
     flex-shrink: 0;
   }
@@ -387,7 +366,7 @@
     font-weight: 600;
     text-decoration: none;
     letter-spacing: 0.05em;
-    cursor: pointer;
+    /* cursor removed */
     opacity: 0;
     transition: opacity 0.2s;
   }
@@ -425,7 +404,7 @@
     gap: 20px;
     overflow: visible;
     width: max-content;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   /* Постеры 2:3 — нужен запас по высоте */
@@ -483,13 +462,9 @@
     border-radius: var(--card-radius);
     overflow: hidden;
     position: relative;
-    cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s;
     background: var(--surface);
   }
   .card:hover {
-    transform: scale(1.07) translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 2px var(--accent);
     z-index: 10;
   }
 
@@ -512,10 +487,8 @@
     bottom: 0; left: 0; right: 0;
     padding: 20px 14px 14px;
     background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.3s;
+    /* Always visible on TV — no hover */
   }
-  .card:hover .card-overlay { opacity: 1; }
 
   .card-play {
     width: 42px; height: 42px;
@@ -608,7 +581,7 @@
     font-size: 14px;
     font-weight: 600;
     color: var(--text-dim);
-    cursor: pointer;
+    /* cursor removed */
     transition: all 0.2s;
     background: transparent;
     letter-spacing: 0.02em;
@@ -664,7 +637,7 @@
     background: var(--surface);
     border-radius: 10px;
     border: 1.5px solid rgba(255,255,255,0.07);
-    cursor: pointer;
+    /* cursor removed */
     transition: border-color 0.2s, background 0.2s, transform 0.2s;
     flex: 0 0 auto;
     width: 220px;
@@ -722,7 +695,7 @@
     transform: translateX(200%);
     transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
     display: flex; align-items: center; gap: 12px;
-    backdrop-filter: blur(20px);
+    /* blur removed */
     min-width: 280px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.4);
   }
@@ -737,7 +710,7 @@
     display: flex; align-items: center; justify-content: center;
     opacity: 0; pointer-events: none;
     transition: opacity 0.3s;
-    backdrop-filter: blur(10px);
+    /* blur removed */
   }
   .modal-backdrop.open { opacity: 1; pointer-events: all; }
 
@@ -783,7 +756,7 @@
     color: #fff;
     font-size: 18px;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
+    /* cursor removed */
     z-index: 10;
     transition: background 0.2s;
   }
@@ -846,7 +819,7 @@
     font-size: 14px; font-weight: 600;
     padding: 12px 22px;
     border-radius: 6px;
-    cursor: pointer;
+    /* cursor removed */
     transition: all 0.2s;
     font-family: inherit;
   }
@@ -911,7 +884,7 @@
     width: 88px;
     flex-shrink: 0;
     text-align: center;
-    cursor: pointer;
+    /* cursor removed */
     transition: transform 0.2s;
   }
   .cast-card:hover { transform: translateY(-4px); }
@@ -969,7 +942,7 @@
     z-index: 600;
     opacity: 0; pointer-events: none;
     transition: opacity 0.25s;
-    backdrop-filter: blur(16px);
+    /* blur removed */
   }
   .search-overlay.open { opacity: 1; pointer-events: all; }
 
@@ -1008,7 +981,7 @@
   .search-close-btn {
     background: none; border: none;
     color: var(--text-muted);
-    font-size: 22px; cursor: pointer;
+    font-size: 22px; /* cursor removed */
     padding: 4px; line-height: 1;
     transition: color 0.2s;
     flex-shrink: 0;
@@ -1077,7 +1050,7 @@
     position: sticky; top: 0; z-index: 50;
     background: linear-gradient(to bottom, rgba(10,10,15,0.98) 80%, transparent);
     padding: 24px 60px 20px;
-    backdrop-filter: blur(20px);
+    /* blur removed */
     border-bottom: 1px solid rgba(255,255,255,0.05);
     display: flex; align-items: center; gap: 24px;
   }
@@ -1085,7 +1058,7 @@
     display: inline-flex; align-items: center; gap: 8px;
     background: none; border: none;
     color: var(--text-dim); font-size: 15px; font-weight: 600;
-    cursor: pointer; padding: 0; transition: color 0.2s;
+    /* cursor removed */ padding: 0; transition: color 0.2s;
   }
   .mylist-back:hover { color: #fff; }
   .mylist-title {
@@ -1116,12 +1089,12 @@
     background: rgba(0,0,0,0.7);
     color: #e53e3e;
     font-size: 16px;
-    cursor: pointer;
+    /* cursor removed */
     display: flex; align-items: center; justify-content: center;
     opacity: 0;
     transition: opacity 0.2s, background 0.2s, transform 0.2s;
     z-index: 10;
-    backdrop-filter: blur(4px);
+    /* blur removed */
   }
   .card:hover .mylist-remove-btn {
     opacity: 1;
@@ -1155,7 +1128,7 @@
     font-family: inherit;
     padding: 7px 18px;
     border-radius: 20px;
-    cursor: pointer;
+    /* cursor removed */
     transition: all 0.2s;
   }
   .mylist-tab:hover { background: rgba(255,255,255,0.13); color: #fff; }
@@ -1181,31 +1154,27 @@
     z-index: 11;
     position: relative;
   }
-  /* Special focus styles per element type */
+  /* Special focus styles — simplified for TV performance */
   .card.tv-focused {
-    transform: scale(1.07) translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 3px var(--accent), 0 0 30px var(--accent-glow);
-    outline: none;
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    z-index: 11;
   }
   .pill.tv-focused {
     background: var(--accent);
     border-color: var(--accent);
     color: #fff;
-    box-shadow: 0 4px 20px var(--accent-glow);
     outline: none;
   }
   .channel-chip.tv-focused {
     border-color: var(--accent);
     background: var(--surface2);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px var(--accent-glow);
     outline: none;
   }
   .nav-links li a.tv-focused {
     color: #fff;
     border-bottom-color: var(--accent);
     outline: none;
-    text-shadow: 0 0 12px var(--accent-glow);
   }
   .nav-icon.tv-focused,
   .avatar.tv-focused {
@@ -1213,12 +1182,9 @@
     border-color: var(--accent);
     color: #fff;
     outline: none;
-    box-shadow: 0 0 20px var(--accent-glow);
   }
   .btn-play.tv-focused {
     background: #e8e0ff;
-    transform: scale(1.04);
-    box-shadow: 0 8px 40px rgba(123,47,255,0.4);
     outline: none;
   }
   .btn-info.tv-focused,
@@ -1226,12 +1192,10 @@
     background: rgba(123,47,255,0.3);
     border-color: var(--accent);
     outline: none;
-    box-shadow: 0 0 20px var(--accent-glow);
   }
   .hero-arrow.tv-focused {
     background: var(--accent);
     border-color: var(--accent);
-    transform: scale(1.1);
     outline: none;
   }
   .mylist-tab.tv-focused {
@@ -1240,22 +1204,18 @@
     color: #fff;
     outline: none;
   }
-  /* Browse grid cards */
   .browse-grid .card.tv-focused,
   .mylist-grid .card.tv-focused,
   .search-grid .card.tv-focused {
-    transform: scale(1.05);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.7), 0 0 0 3px var(--accent), 0 0 24px var(--accent-glow);
-    outline: none;
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
   }
-  /* Back buttons */
   .detail-back.tv-focused,
   .browse-back.tv-focused,
   .mylist-back.tv-focused {
     color: #fff;
     outline: 2px solid var(--accent);
     outline-offset: 4px;
-    border-radius: 4px;
   }
   /* TV mode indicator */
   .tv-mode-indicator {
@@ -1291,12 +1251,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-content { animation: fadeIn 0.8s ease 0.2s both; }
-  .content-area > * { animation: fadeIn 0.6s ease both; }
-  .content-area > *:nth-child(1) { animation-delay: 0.3s; }
-  .content-area > *:nth-child(2) { animation-delay: 0.45s; }
-  .content-area > *:nth-child(3) { animation-delay: 0.6s; }
-  .content-area > *:nth-child(4) { animation-delay: 0.75s; }
+  /* Animations removed for TV performance */
 
   /* ─── COLORS for generated art ─── */
   .c1 { background: linear-gradient(135deg, #1a0533 0%, #3d1a6b 40%, #1e0a3a 100%); }
@@ -1373,7 +1328,7 @@
     font-weight: 700;
     padding: 3px 8px;
     border-radius: 4px;
-    backdrop-filter: blur(6px);
+    /* blur removed */
     z-index: 3;
   }
 
@@ -1409,7 +1364,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     transform: translateX(100%);
-    transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+    transition: transform 0.15s ease;
     scrollbar-width: none;
   }
   .detail-page::-webkit-scrollbar { display: none; }
@@ -1421,7 +1376,7 @@
     z-index: 50;
     background: linear-gradient(to bottom, rgba(10,10,15,0.98) 80%, transparent 100%);
     padding: 24px 40px 28px;
-    backdrop-filter: blur(20px);
+    /* blur removed */
     border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
@@ -1434,7 +1389,7 @@
     color: var(--text-dim);
     font-size: 15px;
     font-weight: 600;
-    cursor: pointer;
+    /* cursor removed */
     padding: 0;
     margin-bottom: 20px;
     transition: color 0.2s;
@@ -1487,7 +1442,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     transform: translateX(100%);
-    transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+    transition: transform 0.15s ease;
     scrollbar-width: none;
   }
   .section-page::-webkit-scrollbar { display: none; }
@@ -1520,7 +1475,7 @@
     position: absolute;
     inset: 0;
     display: flex;
-    transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+    transition: transform 0.3s ease;
     will-change: transform;
     z-index: 1;
   }
@@ -1535,11 +1490,6 @@
     position: absolute; inset: 0;
     background-size: cover;
     background-position: center top;
-    transition: transform 8s ease;
-    transform: scale(1.05);
-  }
-  .section-hero .hero-slide.active .hero-slide-bg {
-    transform: scale(1.0);
   }
   .section-hero .hero-slide::after {
     content: '';
@@ -1592,7 +1542,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     transform: translateX(100%);
-    transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+    transition: transform 0.15s ease;
     scrollbar-width: none;
   }
   .browse-page::-webkit-scrollbar { display: none; }
@@ -1604,7 +1554,7 @@
     z-index: 50;
     background: linear-gradient(to bottom, rgba(10,10,15,0.98) 80%, transparent 100%);
     padding: 24px 40px 20px;
-    backdrop-filter: blur(20px);
+    /* blur removed */
     border-bottom: 1px solid rgba(255,255,255,0.05);
     display: flex;
     align-items: center;
@@ -1620,7 +1570,7 @@
     color: var(--text-dim);
     font-size: 15px;
     font-weight: 600;
-    cursor: pointer;
+    /* cursor removed */
     padding: 0;
     transition: color 0.2s;
     letter-spacing: 0.02em;
@@ -1671,7 +1621,7 @@
     font-weight: 600;
     padding: 14px 40px;
     border-radius: 8px;
-    cursor: pointer;
+    /* cursor removed */
     transition: all 0.2s;
     letter-spacing: 0.04em;
   }
@@ -1688,7 +1638,6 @@
 </head>
 <body>
 
-<div id="cursor"></div>
 <div class="tv-mode-indicator" id="tv-indicator">🎮 Remote Mode</div>
 
 <!-- NAV -->
@@ -1994,20 +1943,8 @@ const GENRE_MAP = {
   10770:'TV Movie',37:'Western',16:'Animation',12:'Adventure'
 };
 
-// ─── CURSOR (optimized: transform + rAF) ───
-const cursor = document.getElementById('cursor');
-let cursorX = 0, cursorY = 0, cursorRAF = false;
-document.addEventListener('mousemove', e => {
-  cursorX = e.clientX - 10;  // offset by half default size
-  cursorY = e.clientY - 10;
-  if (!cursorRAF) {
-    cursorRAF = true;
-    requestAnimationFrame(() => {
-      cursor.style.transform = `translate3d(${cursorX}px,${cursorY}px,0)`;
-      cursorRAF = false;
-    });
-  }
-});
+// ─── CURSOR removed for TV ───
+const cursor = { classList: { add(){}, remove(){} } }; // stub
 
 // ─── EVENT DELEGATION ───────────────────────────────────────
 // Single listener for all card clicks instead of per-card handlers
@@ -2024,18 +1961,7 @@ document.addEventListener('click', e => {
   }
 });
 
-// Cursor enlargement via delegation — one pair of listeners for all interactive elements
-document.addEventListener('mouseenter', e => {
-  if (e.target.closest('.card, .channel-chip, .hero-arrow, .nav-icon, .avatar, .pill, .btn-play, .btn-info, .btn-mylist')) {
-    cursor.classList.add('big');
-  }
-}, true); // capture phase for mouseenter delegation
-
-document.addEventListener('mouseleave', e => {
-  if (e.target.closest('.card, .channel-chip, .hero-arrow, .nav-icon, .avatar, .pill, .btn-play, .btn-info, .btn-mylist')) {
-    cursor.classList.remove('big');
-  }
-}, true);
+// Mouse events removed for TV
 function showToast(msg) {
   const toast = document.getElementById('toast');
   document.getElementById('toast-msg').textContent = msg;
@@ -2188,11 +2114,6 @@ const TV = {
     TV.focused = el;
     el.classList.add('tv-focused');
 
-    // Guard against mousemove during programmatic scroll
-    _tvScrollGuard = true;
-    clearTimeout(TV._scrollGuardTimer);
-    TV._scrollGuardTimer = setTimeout(() => { _tvScrollGuard = false; }, 600);
-
     // 1. Scroll container so the element's zone is in view
     // Special case: hero zone — scroll to very top to show full splash
     const isHeroZone = !!el.closest('.hero, .section-hero, .section-hero-wrap');
@@ -2205,23 +2126,23 @@ const TV = {
     if (isHeroZone) {
       // Scroll to absolute top
       if (scrollableParent) {
-        scrollableParent.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollableParent.scrollTo({ top: 0, behavior: 'auto' });
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'auto' });
       }
     } else if (scrollableParent) {
       const parentRect = scrollableParent.getBoundingClientRect();
       if (targetRect.bottom > parentRect.bottom - 60) {
-        scrollableParent.scrollBy({ top: targetRect.bottom - parentRect.bottom + 120, behavior: 'smooth' });
+        scrollableParent.scrollBy({ top: targetRect.bottom - parentRect.bottom + 120, behavior: 'auto' });
       } else if (targetRect.top < parentRect.top + 100) {
-        scrollableParent.scrollBy({ top: targetRect.top - parentRect.top - 120, behavior: 'smooth' });
+        scrollableParent.scrollBy({ top: targetRect.top - parentRect.top - 120, behavior: 'auto' });
       }
     } else {
       // Home page — scroll window
       if (targetRect.bottom > window.innerHeight - 60) {
-        window.scrollBy({ top: targetRect.bottom - window.innerHeight + 120, behavior: 'smooth' });
+        window.scrollBy({ top: targetRect.bottom - window.innerHeight + 120, behavior: 'auto' });
       } else if (targetRect.top < 100) {
-        window.scrollBy({ top: targetRect.top - 120, behavior: 'smooth' });
+        window.scrollBy({ top: targetRect.top - 120, behavior: 'auto' });
       }
     }
 
@@ -2232,9 +2153,9 @@ const TV = {
         const rect = el.getBoundingClientRect();
         const wrapRect = scrollWrap.getBoundingClientRect();
         if (rect.right > wrapRect.right - 60) {
-          scrollWrap.scrollBy({ left: rect.right - wrapRect.right + 160, behavior: 'smooth' });
+          scrollWrap.scrollBy({ left: rect.right - wrapRect.right + 160, behavior: 'auto' });
         } else if (rect.left < wrapRect.left + 60) {
-          scrollWrap.scrollBy({ left: rect.left - wrapRect.left - 160, behavior: 'smooth' });
+          scrollWrap.scrollBy({ left: rect.left - wrapRect.left - 160, behavior: 'auto' });
         }
       });
     }
@@ -2249,12 +2170,6 @@ const TV = {
   activate() {
     if (TV.active) return;
     TV.active = true;
-    document.body.style.cursor = 'none';
-    document.getElementById('cursor').style.display = 'none';
-    const ind = document.getElementById('tv-indicator');
-    ind.classList.add('show');
-    clearTimeout(TV.indicatorTimeout);
-    TV.indicatorTimeout = setTimeout(() => ind.classList.remove('show'), 2000);
 
     // Resume from last position if available
     if (TV.focused && TV.focused.isConnected) {
@@ -2272,18 +2187,8 @@ const TV = {
     }
   },
 
-  // ── Deactivate TV mode (back to mouse) ────────────────
-  deactivate() {
-    if (!TV.active) return;
-    TV.active = false;
-    document.body.style.cursor = 'none'; // keep custom cursor
-    document.getElementById('cursor').style.display = '';
-    document.getElementById('tv-indicator').classList.remove('show');
-    // Remove visual focus ring but KEEP the reference
-    // so pressing arrow keys resumes from last position
-    if (TV.focused) TV.focused.classList.remove('tv-focused');
-    cursor.classList.remove('big');
-  },
+  // ── Deactivate (stub for TV — never deactivates) ──────
+  deactivate() {},
 
   // ── Find which zone and index the focused element is in ─
   findCurrent(zones) {
@@ -2468,32 +2373,7 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// ─── MOUSE MOVEMENT → deactivate TV mode ────────────────────
-// Only deactivate on REAL mouse movement (not phantom events from scroll)
-let _tvLastMouseX = -1, _tvLastMouseY = -1;
-let _tvScrollGuard = false; // set true during programmatic scrolls
-
-document.addEventListener('mousemove', e => {
-  if (!TV.active) {
-    _tvLastMouseX = e.clientX;
-    _tvLastMouseY = e.clientY;
-    return;
-  }
-  // First event — just record position, don't deactivate
-  if (_tvLastMouseX < 0) {
-    _tvLastMouseX = e.clientX;
-    _tvLastMouseY = e.clientY;
-    return;
-  }
-  // Require meaningful movement (>5px) to deactivate
-  const dx = Math.abs(e.clientX - _tvLastMouseX);
-  const dy = Math.abs(e.clientY - _tvLastMouseY);
-  _tvLastMouseX = e.clientX;
-  _tvLastMouseY = e.clientY;
-  if (dx + dy > 5 && !_tvScrollGuard) {
-    TV.deactivate();
-  }
-});
+// Mouse deactivation removed — TV mode is always active
 
 // ─── SEARCH INPUT LIVE ───
 document.getElementById('search-input').addEventListener('input', e => {
@@ -2644,7 +2524,7 @@ async function openModal(item) {
   // ── Hero изображение ──────────────────────────────────
   const heroImg = document.getElementById('modal-backdrop-img');
   heroImg.style.backgroundImage = item.backdrop_path
-    ? `url(${IMG_BASE}/w1280${item.backdrop_path})`
+    ? `url(${IMG_BASE}/w500${item.backdrop_path})`
     : 'linear-gradient(135deg,#1a0533,#3d1a6b)';
   heroImg.style.backgroundSize     = 'cover';
   heroImg.style.backgroundPosition = 'center';
@@ -2768,7 +2648,7 @@ function renderPersons(details, credits, isTV) {
     const card = document.createElement('div');
     card.className = 'cast-card';
 
-    const photoUrl  = person.profile_path ? `${IMG_BASE}/w185${person.profile_path}` : null;
+    const photoUrl  = person.profile_path ? `${IMG_BASE}/w92${person.profile_path}` : null;
     const sublabel  = person.isCrew
       ? person.role
       : (person.character || '').replace(/\(.*?\)/g, '').trim();
@@ -2994,7 +2874,7 @@ async function openDetailPage(opts) {
     const seeAllEl = rowEl.querySelector(`#detail-seeall-${i}`);
     const capturedDef = def;
     seeAllEl.onclick = () => openBrowsePage(capturedDef.title, endpoint, capturedDef.params, mediaType);
-    renderSkeletons(`detail-track-${i}`, 8, 'poster', 'md');
+    renderSkeletons(`detail-track-${i}`, 5, 'poster', 'md');
   });
 
   // Загружаем данные параллельно
@@ -3012,7 +2892,7 @@ async function openDetailPage(opts) {
       return;
     }
     const items = (res.value.results || []).map(item => ({ ...item, media_type: mediaType }));
-    populateRow(`detail-track-${i}`, items.slice(0, 20), 'poster', 'md');
+    populateRow(`detail-track-${i}`, items.slice(0, 10), 'poster', 'md');
   });
 }
 
@@ -3390,7 +3270,7 @@ async function openSectionPage(type) {
     const capturedDef = def;
     rowEl.querySelector(`#section-seeall-${i}`).onclick =
       () => openBrowsePage(capturedDef.title, capturedDef.endpoint, capturedDef.params, capturedDef.media);
-    renderSkeletons(`section-track-${i}`, 8, 'poster', 'md');
+    renderSkeletons(`section-track-${i}`, 5, 'poster', 'md');
   });
 
   // ═══════════════════════════════════════════════════════════
@@ -3458,7 +3338,7 @@ async function openSectionPage(type) {
       ...item,
       media_type: item.media_type || mediaType,
     }));
-    populateRow(`section-track-${i}`, items.slice(0, 20), 'poster', 'md');
+    populateRow(`section-track-${i}`, items.slice(0, 10), 'poster', 'md');
   });
 }
 
@@ -3483,7 +3363,7 @@ function initSectionHeroSlider(items) {
   items.forEach((item, i) => {
     const slide = document.createElement('div');
     slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
-    const backdrop = item.backdrop_path ? `${IMG_BASE}/original${item.backdrop_path}` : '';
+    const backdrop = item.backdrop_path ? `${IMG_BASE}/w500${item.backdrop_path}` : '';
     slide.innerHTML = `<div class="hero-slide-bg" style="background-image:url('${backdrop}')"></div>`;
     track.appendChild(slide);
 
@@ -3508,7 +3388,7 @@ function initSectionHeroSlider(items) {
   });
 
   startSectionAutoplay();
-  preloadImages(items.map(i => i.backdrop_path ? `${IMG_BASE}/original${i.backdrop_path}` : null));
+  preloadImages(items.map(i => i.backdrop_path ? `${IMG_BASE}/w500${i.backdrop_path}` : null));
 }
 
 function updateSectionHeroContent(item, animate = true) {
@@ -3840,12 +3720,12 @@ function buildCard(item, type = 'poster', size = 'md', opts = {}) {
   let imgPath = null;
   if (type === 'wide') {
     imgPath = item.backdrop_path
-      ? `${IMG_BASE}/w780${item.backdrop_path}`
-      : (item.poster_path ? `${IMG_BASE}/w500${item.poster_path}` : null);
+      ? `${IMG_BASE}/w500${item.backdrop_path}`
+      : (item.poster_path ? `${IMG_BASE}/w342${item.poster_path}` : null);
   } else {
     imgPath = item.poster_path
-      ? `${IMG_BASE}/w500${item.poster_path}`
-      : (item.backdrop_path ? `${IMG_BASE}/w780${item.backdrop_path}` : null);
+      ? `${IMG_BASE}/w342${item.poster_path}`
+      : (item.backdrop_path ? `${IMG_BASE}/w500${item.backdrop_path}` : null);
   }
 
   const badgeHTML = opts.badge
@@ -3946,14 +3826,9 @@ function lazyRow(trackId, loader) {
   obs.observe(sentinel);
 }
 
-// ─── IMAGE PRELOADER ────────────────────────────────────────
-// Предзагружает изображения заранее (hero-слайды, следующий слайд)
+// ─── IMAGE PRELOADER (disabled for TV performance) ─────────
 function preloadImages(urls) {
-  urls.forEach(url => {
-    if (!url) return;
-    const img = new Image();
-    img.src = url;
-  });
+  // No-op on TV — saves memory and bandwidth
 }
 
 
@@ -3992,7 +3867,7 @@ function buildHeroSlides(items) {
     const slide = document.createElement('div');
     slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
     const backdrop = item.backdrop_path
-      ? `${IMG_BASE}/original${item.backdrop_path}` : '';
+      ? `${IMG_BASE}/w500${item.backdrop_path}` : '';
     slide.innerHTML = `<div class="hero-slide-bg" style="background-image:url('${backdrop}')"></div>`;
     track.appendChild(slide);
 
@@ -4148,7 +4023,7 @@ function appendHeroSlides(items) {
     const idx = heroItems.length - 1;
 
     // Слайд
-    const bg = item.backdrop_path ? `${IMG_BASE}/original${item.backdrop_path}` : '';
+    const bg = item.backdrop_path ? `${IMG_BASE}/w500${item.backdrop_path}` : '';
     const slide = document.createElement('div');
     slide.className = 'hero-slide';
     slide.innerHTML = `<div class="hero-slide-bg" style="background-image:url('${bg}')"></div>`;
@@ -4299,7 +4174,7 @@ async function renderStudios() {
 async function init() {
   // Скелетоны только для видимых при старте строк
   renderSkeletons('continue-row',  5, 'wide',   'md');
-  renderSkeletons('originals-row', 8, 'poster', 'md');
+  renderSkeletons('originals-row', 5, 'poster', 'md');
   renderSkeletons('trending-row',  8, 'poster', 'sm');
   renderSkeletons('toprated-row',  8, 'poster', 'md');
 
@@ -4332,7 +4207,7 @@ async function init() {
 
     // Предзагружаем backdrop следующих hero-слайдов пока юзер читает первый
     preloadImages(
-      heroSlides.map(i => i.backdrop_path ? `${IMG_BASE}/original${i.backdrop_path}` : null)
+      heroSlides.map(i => i.backdrop_path ? `${IMG_BASE}/w500${i.backdrop_path}` : null)
     );
 
     // ── Continue watching (видно сразу) ─────────────────────
@@ -4355,13 +4230,13 @@ async function init() {
       if (ns[i]) newMixed.push({ ...ns[i], media_type: 'tv'    });
       if (!nm[i] && !ns[i]) break;
     }
-    populateRow('originals-row', newMixed.slice(0, 20), 'poster', 'md', item => ({
+    populateRow('originals-row', newMixed.slice(0, 10), 'poster', 'md', item => ({
       badge: item.media_type === 'movie' ? 'NEW' : 'ON AIR',
     }));
 
     // ── Trending (сразу под fold — грузим тоже сразу) ────────
     const trending = trendingAll.results || [];
-    populateRow('trending-row', trending.slice(0, 20), 'poster', 'sm');
+    populateRow('trending-row', trending.slice(0, 10), 'poster', 'sm');
 
     // ── Top Rated — ниже fold, грузим лениво ────────────────
     lazyRow('toprated-row', async () => {
@@ -4377,7 +4252,7 @@ async function init() {
         if (topMov[i]) topMixed.push({ ...topMov[i], media_type: 'movie' });
         if (!topTV[i] && !topMov[i]) break;
       }
-      populateRow('toprated-row', topMixed.slice(0, 20), 'poster', 'md');
+      populateRow('toprated-row', topMixed.slice(0, 10), 'poster', 'md');
     });
 
     // ── Animation + Anime — ниже fold, грузим лениво ────────
@@ -4399,7 +4274,7 @@ async function init() {
 
       if (extra.length) {
         appendHeroSlides(extra);
-        preloadImages(extra.map(i => i.backdrop_path ? `${IMG_BASE}/original${i.backdrop_path}` : null));
+        preloadImages(extra.map(i => i.backdrop_path ? `${IMG_BASE}/w500${i.backdrop_path}` : null));
       }
     }).catch(() => {}); // не критично
 
@@ -4410,6 +4285,9 @@ async function init() {
 }
 
 init();
+
+// Auto-activate TV mode — this is a TV app
+setTimeout(() => TV.activate(), 2000);
 </script>
 </body>
 </html>
