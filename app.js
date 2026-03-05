@@ -37779,7 +37779,7 @@
   /**
    * Добовляем поля
    */
-  select('jackett_url', '', 'jacred.xyz');
+  select('jackett_url', '', 'jac.red');
   select('jackett_key', '', '');
   select('prowlarr_url', '', '');
   select('prowlarr_key', '', '');
