@@ -1792,6 +1792,101 @@
   /* ── 14. TV cursor — скрываем полностью ─────────────────── */
   body.tv-device #cursor                { display: none !important; }
 
+  /* ═══════════════════════════════════════════════════════════
+     v2 OPTIMIZATIONS — GPU Layers, Outline Focus, Virtual Cards
+  ═══════════════════════════════════════════════════════════ */
+
+  /* ── v2-1. GPU-слои ДО анимации (proactive promotion) ───────
+     Без will-change браузер создаёт compositor layer прямо в
+     момент hover/focus — это вызывает jank на слабом железе.
+     С will-change слой уже готов, scale() идёт по compositor
+     thread без участия main thread.                           */
+  body.tv-device .card {
+    will-change: transform;
+  }
+  /* Hero-slides уже имеют will-change в базовом CSS.
+     Добавляем для страниц-слоёв — slide-in transition
+     происходит без main-thread involvement.                   */
+  body.tv-device .mylist-page,
+  body.tv-device .detail-page,
+  body.tv-device .section-page,
+  body.tv-device .browse-page,
+  body.tv-device .modal {
+    will-change: transform;
+  }
+  /* Снимаем will-change у элементов, которые не анимируются
+     постоянно — экономим GPU memory для TV-боксов с 2GB RAM. */
+  body.tv-device .channel-chip,
+  body.tv-device .cast-card {
+    will-change: auto;
+  }
+
+  /* ── v2-2. outline вместо box-shadow для TV focus-колец ─────
+     box-shadow: требует repaint всей карточки + соседних.
+     outline: рисуется compositor-ом, не вызывает layout/paint
+     соседних элементов — критично для D-pad навигации по ряду. */
+  body.tv-device .card.tv-focused {
+    box-shadow: none;
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    /* scale остаётся — он уже на GPU compositor layer */
+  }
+  body.tv-device .browse-grid .card.tv-focused,
+  body.tv-device .mylist-grid .card.tv-focused,
+  body.tv-device .search-grid .card.tv-focused {
+    box-shadow: none;
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  body.tv-device .channel-chip.tv-focused {
+    box-shadow: none;
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  body.tv-device .nav-icon.tv-focused,
+  body.tv-device .avatar.tv-focused {
+    box-shadow: none;
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  body.tv-device .btn-info.tv-focused,
+  body.tv-device .btn-mylist.tv-focused {
+    box-shadow: none;
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  body.tv-device .hero-arrow.tv-focused {
+    box-shadow: none;
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  body.tv-device .pill.tv-focused {
+    box-shadow: none;
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* ── v2-3. content-visibility на отдельных карточках ────────
+     Дополняет content-visibility на .row.
+     Карточки за пределами viewport полностью пропускают
+     layout + paint + composite — эквивалент "виртуального
+     списка" без JS-оверхеда.
+     contain-intrinsic-size: точные размеры карт по типу.     */
+  body.tv-device .card-poster-sm { content-visibility: auto; contain-intrinsic-size: 180px 270px; }
+  body.tv-device .card-poster-md { content-visibility: auto; contain-intrinsic-size: 240px 360px; }
+  body.tv-device .card-poster-lg { content-visibility: auto; contain-intrinsic-size: 320px 480px; }
+  body.tv-device .card-wide-sm   { content-visibility: auto; contain-intrinsic-size: 320px 180px; }
+  body.tv-device .card-wide-md   { content-visibility: auto; contain-intrinsic-size: 420px 236px; }
+  body.tv-device .card-wide-lg   { content-visibility: auto; contain-intrinsic-size: 560px 315px; }
+  body.tv-device .card-square-sm { content-visibility: auto; contain-intrinsic-size: 160px 160px; }
+  body.tv-device .card-square-md { content-visibility: auto; contain-intrinsic-size: 220px 220px; }
+
+  /* Но для tv-focused карточки content-visibility должна быть visible
+     чтобы браузер не пропустил её рендер при scroll-to-focus.       */
+  body.tv-device .card.tv-focused {
+    content-visibility: visible;
+  }
+
 </style>
 </head>
 <body>
@@ -3959,24 +4054,64 @@ function syncCardListState(itemId, added) {
   });
 }
 
-// ─── POPULATE ROW ───
+// ─── POPULATE ROW ───────────────────────────────────────────
+// v2: на TV рендерим сначала 8 карточек (то что видно на экране),
+// остальные добавляем через requestIdleCallback — main thread
+// освобождается быстрее, первая отрисовка не блокируется.
+const TV_FIRST_BATCH = 8; // карточек в первой порции
+
 function populateRow(id, items, type = 'poster', size = 'md', optsFn = () => ({})) {
   const el = document.getElementById(id);
   if (!el) return;
   el.innerHTML = '';
-  items.forEach(item => el.appendChild(buildCard(item, type, size, optsFn(item))));
+
+  if (!IS_TV_DEVICE || items.length <= TV_FIRST_BATCH) {
+    // Десктоп или маленький набор — рендерим всё сразу
+    items.forEach(item => el.appendChild(buildCard(item, type, size, optsFn(item))));
+    return;
+  }
+
+  // TV: первый батч — синхронно (чтобы строка не выглядела пустой)
+  items.slice(0, TV_FIRST_BATCH).forEach(
+    item => el.appendChild(buildCard(item, type, size, optsFn(item)))
+  );
+
+  // Оставшиеся карточки — в idle time, порциями по 4
+  // Используем requestIdleCallback если есть, иначе setTimeout(0)
+  const rest = items.slice(TV_FIRST_BATCH);
+  const CHUNK = 4;
+  let idx = 0;
+
+  function scheduleChunk() {
+    if (idx >= rest.length) return;
+    const schedule = typeof requestIdleCallback !== 'undefined'
+      ? cb => requestIdleCallback(cb, { timeout: 500 })
+      : cb => setTimeout(cb, 0);
+
+    schedule(deadline => {
+      // Рендерим пока есть idle-time или хотя бы один элемент
+      const limit = idx + CHUNK;
+      while (idx < limit && idx < rest.length) {
+        el.appendChild(buildCard(rest[idx], type, size, optsFn(rest[idx])));
+        idx++;
+      }
+      scheduleChunk(); // планируем следующий батч
+    });
+  }
+
+  scheduleChunk();
 }
 
 // ─── LAZY ROW LOADER (Intersection Observer) ────────────────
-// Регистрирует строку для отложенной загрузки — данные грузятся
-// только когда строка появляется в viewport (±200px).
-// loader — async функция () => void, которая делает fetch и populateRow
+// v2: на TV rootMargin увеличен до 400px — начинаем грузить
+// заранее, т.к. Android TV медленнее реагирует на скролл.
 function lazyRow(trackId, loader) {
   const track = document.getElementById(trackId);
   if (!track) return;
 
-  // Ищем ближайший контейнер как якорь для observer
   const sentinel = track.closest('.row') || track.closest('.channels-scroll-wrap') || track;
+  // TV грузит чуть раньше чтобы скрыть задержку медленного сети/CPU
+  const margin = IS_TV_DEVICE ? '400px 0px' : '200px 0px';
 
   const obs = new IntersectionObserver(
     (entries, o) => {
@@ -3985,7 +4120,7 @@ function lazyRow(trackId, loader) {
         loader().catch(err => console.warn('lazyRow error:', trackId, err));
       }
     },
-    { rootMargin: '200px 0px' } // начинаем загрузку за 200px до появления
+    { rootMargin: margin }
   );
 
   obs.observe(sentinel);
