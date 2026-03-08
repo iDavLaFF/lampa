@@ -3,8 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
 <title>MAX — Stream TV & Movies</title>
-<link href="https://fonts.googleapis.com/css2?family=HBO+Sans:wght@400;700&family=Barlow:wght@300;400;500;600;700;900&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+<!-- DNS prefetch + preconnect для быстрого старта API-запросов -->
+<link rel="preconnect" href="https://api.themoviedb.org">
+<link rel="preconnect" href="https://image.tmdb.org">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0a0a0f;
@@ -1646,6 +1652,146 @@
     cursor: default;
   }
 
+  /* ═══════════════════════════════════════════════════════════
+     ANDROID TV WebView — Performance Optimizations
+     Activated when JS sets <body class="tv-device">
+     Цель: убрать дорогие GPU-эффекты, ускорить transitions,
+     снизить нагрузку на compositor thread Android WebView.
+  ═══════════════════════════════════════════════════════════ */
+
+  /* ── 1. Уничтожаем backdrop-filter — главный GPU-убийца ── */
+  body.tv-device .btn-info,
+  body.tv-device .hero-arrow,
+  body.tv-device .toast,
+  body.tv-device .card-rating,
+  body.tv-device .modal-backdrop,
+  body.tv-device .search-overlay,
+  body.tv-device .mylist-header,
+  body.tv-device .browse-header,
+  body.tv-device .detail-header,
+  body.tv-device .mylist-remove-btn {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* Заменяем blur-фоны на непрозрачные аналоги */
+  body.tv-device .btn-info              { background: rgba(15,15,28,0.90); }
+  body.tv-device .hero-arrow            { background: rgba(15,15,28,0.84); }
+  body.tv-device .toast                 { background: var(--surface2); box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+  body.tv-device .card-rating           { background: rgba(0,0,0,0.72); }
+  body.tv-device .modal-backdrop        { background: rgba(0,0,0,0.93); }
+  body.tv-device .search-overlay        { background: rgba(10,10,15,0.97); }
+  body.tv-device .mylist-header,
+  body.tv-device .browse-header,
+  body.tv-device .detail-header         { background: rgba(10,10,15,0.99); }
+  body.tv-device .mylist-remove-btn     { background: rgba(0,0,0,0.72); }
+
+  /* ── 2. Отключаем Ken Burns — дорогая 8-секундная анимация ── */
+  body.tv-device .hero-slide-bg {
+    transition: none !important;
+    transform: none !important;
+  }
+  body.tv-device .section-hero .hero-slide-bg {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  /* ── 3. Упрощаем hero-градиенты (3 слоя → 2) ──────────── */
+  body.tv-device .hero-slide::after,
+  body.tv-device .section-hero .hero-slide::after {
+    background:
+      linear-gradient(to right, rgba(10,10,15,0.96) 0%, rgba(10,10,15,0.50) 48%, transparent 78%),
+      linear-gradient(to top,   rgba(10,10,15,0.98) 0%, transparent 52%);
+  }
+
+  /* ── 4. Ускоряем transitions ─────────────────────────────── */
+  body.tv-device .card                  { transition: transform 0.16s ease, box-shadow 0.16s; }
+  body.tv-device .hero-slides,
+  body.tv-device .section-hero .hero-slides { transition: transform 0.45s ease; }
+  body.tv-device .modal                 { transition: transform 0.22s ease; }
+  body.tv-device .modal-backdrop        { transition: opacity 0.18s; }
+  body.tv-device .search-overlay        { transition: opacity 0.14s; }
+  body.tv-device .mylist-page,
+  body.tv-device .detail-page,
+  body.tv-device .section-page,
+  body.tv-device .browse-page           { transition: transform 0.28s ease; }
+  body.tv-device .card-overlay          { transition: none; }
+  body.tv-device .hero-dot              { transition: width 0.2s, background 0.2s, border-radius 0.2s; }
+  body.tv-device .nav-links li a        { transition: color 0.15s; }
+  body.tv-device .channel-chip          { transition: border-color 0.15s, background 0.15s, transform 0.15s; }
+
+  /* ── 5. Убираем stagger-анимации загрузки ────────────────── */
+  body.tv-device .hero-content,
+  body.tv-device .section-hero .hero-content { animation: none; opacity: 1; transform: none; }
+  body.tv-device .content-area > *      { animation: none !important; opacity: 1; transform: none; }
+
+  /* ── 6. Отключаем blink-анимацию точки hero-тега ────────── */
+  body.tv-device .hero-tag .dot         { animation: none; opacity: 1; }
+
+  /* ── 7. Упрощаем тени (меньший blur radius) ─────────────── */
+  body.tv-device .card:hover            { box-shadow: 0 10px 22px rgba(0,0,0,0.65), 0 0 0 2px var(--accent); }
+  body.tv-device .card.tv-focused       { box-shadow: 0 10px 22px rgba(0,0,0,0.65), 0 0 0 3px var(--accent); }
+  body.tv-device .browse-grid .card.tv-focused,
+  body.tv-device .mylist-grid .card.tv-focused,
+  body.tv-device .search-grid .card.tv-focused { box-shadow: 0 8px 18px rgba(0,0,0,0.65), 0 0 0 3px var(--accent); }
+  body.tv-device .btn-play:hover,
+  body.tv-device .btn-play.tv-focused   { box-shadow: 0 4px 18px rgba(123,47,255,0.35); }
+  /* Убираем glow-тени у focused TV-элементов (только outline) */
+  body.tv-device .nav-icon.tv-focused,
+  body.tv-device .avatar.tv-focused,
+  body.tv-device .btn-info.tv-focused,
+  body.tv-device .btn-mylist.tv-focused,
+  body.tv-device .channel-chip.tv-focused,
+  body.tv-device .hero-arrow.tv-focused,
+  body.tv-device .pill.tv-focused       { box-shadow: 0 0 0 2px var(--accent); }
+
+  /* ── 8. Убираем дорогие text-shadow и gradient на тексте ─── */
+  body.tv-device .hero-title            { text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
+  body.tv-device .nav-links li a.tv-focused { text-shadow: none; }
+  body.tv-device .art-title            { text-shadow: 0 1px 4px rgba(0,0,0,0.9); }
+
+  /* Упрощаем gradient-текст логотипа */
+  body.tv-device .logo {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: #fff;
+    color: #fff;
+  }
+
+  /* Упрощаем gradient-текст highlight в заголовках */
+  body.tv-device .hero-title .highlight {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── 9. CSS Containment — изолируем карточки ─────────────── */
+  body.tv-device .card                  { contain: layout style; }
+
+  /* ── 10. Упрощаем shimmer-скелетоны ─────────────────────── */
+  body.tv-device .skeleton-shimmer {
+    animation: none;
+    background: var(--surface2);
+  }
+
+  /* ── 11. Отключаем анимацию появления search-карточек ────── */
+  body.tv-device .search-card-appear    { animation: none; opacity: 1; }
+
+  /* ── 12. content-visibility для off-screen строк ─────────── */
+  body.tv-device .row {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 300px;
+  }
+
+  /* ── 13. art-shapes — убираем дорогой radial-gradient ────── */
+  body.tv-device .art-shapes::before   { display: none; }
+
+  /* ── 14. TV cursor — скрываем полностью ─────────────────── */
+  body.tv-device #cursor                { display: none !important; }
+
 </style>
 </head>
 <body>
@@ -1909,6 +2055,38 @@
 </div>
 
 <script>
+// ═══════════════════════════════════════════════════════════
+//  ANDROID TV DEVICE DETECTION + EARLY OPTIMIZATIONS
+//  Запускается до любого другого кода — применяет класс
+//  body.tv-device и задаёт IS_TV_DEVICE для всего приложения.
+// ═══════════════════════════════════════════════════════════
+const IS_TV_DEVICE = (function() {
+  const ua = navigator.userAgent || '';
+  // Явные TV-индикаторы в User-Agent
+  if (/Android TV|AFTM|AFTRS|AFTB|Fire TV|FireTV|Nexus Player|SHIELD TV|BRAVIA|Hisense|Philips TV|LG NetCast/i.test(ua)) return true;
+  // Android без Mobile/Tablet = большой экран (TV или TV-бокс)
+  if (/Android/i.test(ua) && !/Mobile|Tablet/i.test(ua)) return true;
+  // Десктопное окно 1920+ px — разработка/тестирование на большом экране
+  if (window.screen.width >= 1920 && window.devicePixelRatio <= 1 && !('ontouchstart' in window)) return true;
+  return false;
+})();
+
+if (IS_TV_DEVICE) {
+  document.body.classList.add('tv-device');
+}
+
+// ── Page Visibility API — пауза слайдера когда приложение скрыто ──
+// (Важно для Android TV: WebView часто уходит в фон при переключении)
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    clearInterval(heroTimer);
+    clearInterval(sectionHeroTimer);
+  } else {
+    if (typeof heroItems !== 'undefined' && heroItems.length) resetAutoplay();
+    if (typeof sectionHeroItems !== 'undefined' && sectionHeroItems.length) startSectionAutoplay();
+  }
+});
+
 // ═══════════════════════════════════════════════════════════
 //  TMDB API INTEGRATION
 // ═══════════════════════════════════════════════════════════
@@ -3349,7 +3527,8 @@ function initSectionHeroSlider(items) {
   items.forEach((item, i) => {
     const slide = document.createElement('div');
     slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
-    const backdrop = item.backdrop_path ? `${IMG_BASE}/original${item.backdrop_path}` : '';
+    const heroImgSize = IS_TV_DEVICE ? 'w1280' : 'original';
+    const backdrop = item.backdrop_path ? `${IMG_BASE}/${heroImgSize}${item.backdrop_path}` : '';
     slide.innerHTML = `<div class="hero-slide-bg" style="background-image:url('${backdrop}')"></div>`;
     track.appendChild(slide);
 
@@ -3728,7 +3907,7 @@ function buildCard(item, type = 'poster', size = 'md', opts = {}) {
   card.innerHTML = `
     <div class="card-poster">
       ${imgPath
-        ? `<img src="${imgPath}" alt="${title.replace(/"/g,"")}" loading="lazy"
+        ? `<img src="${imgPath}" alt="${title.replace(/"/g,"")}" loading="lazy" decoding="async"
                style="width:100%;height:100%;object-fit:cover;display:block;">`
         : `<div class="card-art-fallback"><span>${title}</span></div>`}
       ${badgeHTML}
@@ -3857,8 +4036,10 @@ function buildHeroSlides(items) {
     // Слайд
     const slide = document.createElement('div');
     slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
+    // TV: w1280 вместо original — быстрее загружается, незаметно на 1080p
+    const heroImgSize = IS_TV_DEVICE ? 'w1280' : 'original';
     const backdrop = item.backdrop_path
-      ? `${IMG_BASE}/original${item.backdrop_path}` : '';
+      ? `${IMG_BASE}/${heroImgSize}${item.backdrop_path}` : '';
     slide.innerHTML = `<div class="hero-slide-bg" style="background-image:url('${backdrop}')"></div>`;
     track.appendChild(slide);
 
@@ -4014,7 +4195,8 @@ function appendHeroSlides(items) {
     const idx = heroItems.length - 1;
 
     // Слайд
-    const bg = item.backdrop_path ? `${IMG_BASE}/original${item.backdrop_path}` : '';
+    const heroImgSize = IS_TV_DEVICE ? 'w1280' : 'original';
+    const bg = item.backdrop_path ? `${IMG_BASE}/${heroImgSize}${item.backdrop_path}` : '';
     const slide = document.createElement('div');
     slide.className = 'hero-slide';
     slide.innerHTML = `<div class="hero-slide-bg" style="background-image:url('${bg}')"></div>`;
@@ -4275,7 +4457,15 @@ async function init() {
   }
 }
 
-init();
+init().then(() => {
+  // На TV-устройствах сразу активируем D-pad навигацию
+  // после загрузки данных — чтобы первый элемент был уже в DOM
+  if (IS_TV_DEVICE) {
+    setTimeout(() => {
+      TV.activate();
+    }, 600);
+  }
+});
 </script>
 </body>
 </html>
