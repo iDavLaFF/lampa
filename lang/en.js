@@ -153,6 +153,11 @@ export default {
 
     settings_player_type: 'Player type',
     settings_player_type_descr: 'Which player to play',
+    settings_infuse_launch_mode: 'Launch in Infuse',
+    settings_infuse_launch_mode_descr: 'What to do when opening video in Infuse. Torrents: Save and play only adds to library',
+    settings_infuse_launch_ask: 'Ask on launch',
+    settings_infuse_launch_play: 'Play',
+    settings_infuse_launch_save_and_play: 'Save and play',
     settings_player_iptv_type: 'Player type for IPTV',
     settings_player_iptv_type_descr: 'Which player to play IPTV channels',
     settings_player_reset: 'Reset default player',
@@ -327,6 +332,7 @@ export default {
     title_mytorrents: 'My torrents',
     title_last: 'Last',
     title_action: 'Action',
+    title_action_infuse: 'Infuse action',
     title_producer: 'Producer',
     title_collection: 'Collection',
     title_recomendations: 'Recommendations',
@@ -1308,5 +1314,16 @@ export default {
     remote_configuration_waite_text: 'You can now pass this code to another application to grant access to settings.',
     remote_configuration_open_button: 'Open Access',
     remote_configuration_code_life: 'Code is valid',
-    remote_configuration_notice_nocode: 'Failed to open access'
+    remote_configuration_notice_nocode: 'Failed to open access',
+
+    title_studios: 'Production Studios',
+    title_networks: 'Streaming Platforms',
+
+    menu_multmovie: 'Animated Movies',
+    menu_multserial: 'Animated Series',
+    menu_animemovie: 'Anime Movies',
+    menu_animeserial: 'Anime Series',
+
+    title_audience_choice: 'Audience choise',
+    title_genres: 'Genres'
 }

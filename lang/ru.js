@@ -188,6 +188,11 @@ export default {
 
     settings_player_type: 'Тип плеера',
     settings_player_type_descr: 'Каким плеером воспроизводить видео',
+    settings_infuse_launch_mode: 'Запуск в Infuse',
+    settings_infuse_launch_mode_descr: 'Что делать при открытии видео в Infuse. Торрент: «Сохранить и играть» — только в библиотеку',
+    settings_infuse_launch_ask: 'Спрашивать при запуске',
+    settings_infuse_launch_play: 'Играть',
+    settings_infuse_launch_save_and_play: 'Сохранить и играть',
     settings_player_iptv_type: 'Тип плеера для IPTV',
     settings_player_iptv_type_descr: 'Каким плеером воспроизводить IPTV-каналы',
     settings_player_torrent_type: 'Тип плеера для торрентов',
@@ -401,6 +406,7 @@ export default {
     title_mytorrents: 'Мои торренты',
     title_last: 'Последняя',
     title_action: 'Действие',
+    title_action_infuse: 'Действие Infuse',
     title_producer: 'Режиссер',
     title_collection: 'Коллекция',
     title_recomendations: 'Рекомендации',
@@ -428,7 +434,7 @@ export default {
     title_popular_movie: 'Популярные фильмы',
     title_popular_tv: 'Популярные сериалы',
     title_new_this_year: 'Новинки этого года',
-    title_hight_voite: 'С высоким рейтингом',
+    title_hight_voite: 'Топ',
     title_new: 'Новинки',
     title_trend_day: 'Сегодня в тренде',
     title_trend_week: 'В тренде за неделю',
@@ -1315,5 +1321,16 @@ export default {
     remote_configuration_waite_text: 'Теперь вы можете передать этот код в другое приложение, чтобы предоставить доступ к настройкам.',
     remote_configuration_open_button: 'Открыть доступ',
     remote_configuration_code_life: 'Код действителен',
-    remote_configuration_notice_nocode: 'Не удалось открыть доступ'
+    remote_configuration_notice_nocode: 'Не удалось открыть доступ',
+
+    title_studios: 'Кинокомпании',
+    title_networks: 'Стриминговые платформы',
+
+    menu_multmovie: 'Мультфильмы',
+    menu_multserial: 'Мультсериалы',
+    menu_animemovie: 'Аниме-фильмы',
+    menu_animeserial: 'Аниме-сериалы',
+
+    title_audience_choice: 'Выбор зрителей',
+    title_genres: 'Жанры'
 }
