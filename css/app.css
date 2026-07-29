@@ -2156,8 +2156,8 @@ body.settings--open .settings__layer {
 }
 .card.focus .card__img, .card.hover .card__img {
   opacity: 1;
-  -webkit-filter: brightness(1.2);
-          filter: brightness(1.2);
+  -webkit-filter: brightness(1.05);
+          filter: brightness(1.05);
   -webkit-box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.1);
           box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.1);
 }
@@ -2226,8 +2226,8 @@ body.settings--open .settings__layer {
   z-index: 1;
 }
 .card--company.focus .card__img, .card--company.hover .card__img {
-  -webkit-filter: brightness(1.2);
-          filter: brightness(1.2);
+  -webkit-filter: brightness(1.05);
+          filter: brightness(1.05);
   opacity: 1;
   -webkit-box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.1);
           box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.1);
@@ -2318,8 +2318,8 @@ body.settings--open .settings__layer {
           box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.1);
 }
 .card--genre.focus .card__img, .card--genre.hover .card__img {
-  -webkit-filter: brightness(1.2);
-          filter: brightness(1.2);
+  -webkit-filter: brightness(1.05);
+          filter: brightness(1.05);
   opacity: 1;
 }
 .card--genre .card__vote,
@@ -2935,8 +2935,8 @@ body.platform--netcast .card__title {
   opacity: 1;
 }
 .full-person.focus .full-person__photo {
-  -webkit-filter: brightness(1.2);
-          filter: brightness(1.2);
+  -webkit-filter: brightness(1.05);
+          filter: brightness(1.05);
   -webkit-box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.1);
           box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.1);
 }
@@ -3230,8 +3230,8 @@ body.platform--netcast .card__title {
 }
 .full-episode.focus .full-episode__img {
   opacity: 1;
-  -webkit-filter: brightness(1.2);
-          filter: brightness(1.2);
+  -webkit-filter: brightness(1.05);
+          filter: brightness(1.05);
   -webkit-box-shadow: 0 7.5px 15px rgba(255, 255, 255, 0.1);
           box-shadow: 0 7.5px 15px rgba(255, 255, 255, 0.1);
 }
@@ -5153,8 +5153,8 @@ body.selectbox--open .selectbox__layer {
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
           transform: scale(1.1);
-  -webkit-filter: brightness(1.2);
-          filter: brightness(1.2);
+  -webkit-filter: brightness(1.05);
+          filter: brightness(1.05);
 }
 .card-more--small-radius .card-more__box {
   -webkit-border-radius: 0.3em;
@@ -7603,8 +7603,8 @@ body.platform--netcast .torrent-item__ffprobe > div::before {
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
           transform: scale(1.1);
-  -webkit-filter: brightness(1.2);
-          filter: brightness(1.2);
+  -webkit-filter: brightness(1.05);
+          filter: brightness(1.05);
   -webkit-transition: -webkit-transform 0.2s;
   transition: -webkit-transform 0.2s;
   -o-transition: transform 0.2s;
