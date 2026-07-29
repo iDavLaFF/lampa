@@ -17581,7 +17581,7 @@
       var is_tv = Boolean(card.name || card.first_air_date || card.number_of_seasons);
       if (is_tv) return true;
       var percent = Timeline.view(Utils.hash(card.original_title)).percent;
-      return percent < 90;
+      return percent > 0 && percent < 90;
     });
     result.forEach(function (card) {
       var is_tv = Boolean(card.name || card.first_air_date || card.number_of_seasons);
@@ -27380,7 +27380,7 @@
     select$1('keyboard_type', {
       'lampa': '#{settings_param_keyboard_lampa}',
       'integrate': '#{settings_param_keyboard_system}'
-    }, Platform.screen('mobile') || Platform.is('apple_tv') || Platform.macOS() || Platform.desktop() || Platform.is('browser') ? 'integrate' : 'lampa');
+    }, 'integrate');
     select$1('navigation_type', {
       'controll': '#{settings_param_navigation_remote}',
       'mouse': '#{settings_param_navigation_mouse}',
@@ -32810,8 +32810,8 @@
     console.log('App', 'is PWA:', Utils.isPWA());
     console.log('App', 'platform:', Storage.get('platform', 'noname'));
     console.log('App', 'version:', object$2.app_version);
-    console.log('App', 'build date:', '2026-07-22 15:49');
-    console.log('App', 'hash', 'aa4082af3bb1a290e2ec6a57a3f224fa');
+    console.log('App', 'build date:', '2026-07-30 00:51');
+    console.log('App', 'hash', '3cd23f139382bd96d8419ce4bc6db8b0');
     console.log('App', 'location:', location.href);
 
     // Записываем uid
