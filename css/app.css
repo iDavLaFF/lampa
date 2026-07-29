@@ -2245,10 +2245,9 @@ body.settings--open .settings__layer {
 .card--genre {
   --genre-left: #232526;
   --genre-right: #3a6073;
-  width: 21em;
 }
 .card--genre .card__view {
-  padding-bottom: 45%;
+  padding-bottom: 60%;
   -webkit-border-radius: 1em;
           border-radius: 1em;
   position: relative;
@@ -2293,7 +2292,7 @@ body.settings--open .settings__layer {
   right: 0;
   bottom: 0.8em;
   text-align: center;
-  font-size: 1.4em;
+  font-size: 1em;
   font-weight: 300;
   letter-spacing: 0.01em;
   color: #fff;
