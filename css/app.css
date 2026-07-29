@@ -2303,9 +2303,9 @@ body.settings--open .settings__layer {
 }
 .card--genre.focus, .card--genre.hover {
   will-change: transform;
-  -webkit-transform: scale(1.06);
-      -ms-transform: scale(1.06);
-          transform: scale(1.06);
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
   z-index: 1;
 }
 .card--genre.focus .card__genre-title, .card--genre.hover .card__genre-title {
